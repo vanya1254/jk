@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+// html {
+//   transition: color-scheme 0.8s linear;
+// }
+
 html,
 body {
   max-width: 100vw;
@@ -34,6 +38,8 @@ main {
 a {
   color: inherit;
   text-decoration: none;
+  display: block;
+  line-height: 0;
 }
 
 a,
@@ -52,6 +58,8 @@ input[type="submit"] {
   box-shadow: none;
   background-color: transparent;
   background: none;
+  border: none;
+  line-height: 0;
   cursor: pointer;
 }
 
@@ -69,4 +77,8 @@ img,
 svg {
   max-width: 100%;
   height: auto;
+}
+
+[data-theme="light"] .logo path {
+  fill: black;
 }

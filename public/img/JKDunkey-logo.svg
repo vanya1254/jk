@@ -1,48 +1,5 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { useTheme } from "next-themes";
-import { FiSun } from "react-icons/fi";
-import { BsMoon } from "react-icons/bs";
-import { HiOutlineSearch } from "react-icons/hi";
-import { RiShoppingCart2Line } from "react-icons/ri";
-
-import logo from "../../../public/img/JKDunkey-logo.svg";
-
-import styles from "./Header.module.scss";
-
-export const Header: React.FC = () => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
-  return (
-    <header className={styles.root}>
-      <nav className={styles.root__nav}>
-        <button
-          className={styles.root_switcher}
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        >
-          {theme === "dark" ? <FiSun /> : <BsMoon />}
-        </button>
-        <Link href={"/"} className={styles.root_logo}>
-          <svg
-            className="logo"
-            xmlns="http://www.w3.org/2000/svg"
-            version="1.1"
-            viewBox="0.00 0.00 1448.00 1447.00"
-          >
-            <path
-              fill="#fefefc"
-              d="
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0.00 0.00 1448.00 1447.00">
+<path fill="#fefefc" d="
   M 948.56 664.31
   Q 953.71 666.31 958.81 667.65
   Q 974.03 671.65 990.88 676.73
@@ -242,11 +199,9 @@ export const Header: React.FC = () => {
   Q 984.15 471.03 979.64 475.95
   C 954.04 503.94 929.88 530.50 904.39 556.89
   Z"
-            />
+/>
 
-            <path
-              fill="#fefefc"
-              d="
+<path fill="#fefefc" d="
   M 1448.00 652.13
   L 1448.00 664.25
   Q 1447.44 667.67 1447.68 671.14
@@ -259,10 +214,8 @@ export const Header: React.FC = () => {
   Q 1447.64 577.44 1447.64 577.56
   Q 1447.35 614.84 1448.00 652.13
   Z"
-            />
-            <path
-              fill="#fefefc"
-              d="
+/>
+<path fill="#fefefc" d="
   M 1448.00 1076.13
   L 1448.00 1086.21
   Q 1447.35 1089.19 1448.00 1092.13
@@ -277,18 +230,6 @@ export const Header: React.FC = () => {
   Q 1447.62 1056.59 1447.62 1056.64
   Q 1447.49 1066.41 1448.00 1076.13
   Z"
-            />
-          </svg>
-        </Link>
-        <div className={styles.root__btns}>
-          <button className={styles.root__btns_search}>
-            <HiOutlineSearch />
-          </button>
-          <button className={styles.root__btns_cart}>
-            <RiShoppingCart2Line />
-          </button>
-        </div>
-      </nav>
-    </header>
-  );
-};
+/>
+
+</svg>
