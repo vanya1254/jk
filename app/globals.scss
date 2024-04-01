@@ -10,6 +10,10 @@
 //   transition: color-scheme 0.8s linear;
 // }
 
+:root {
+  --height-header: 56px;
+}
+
 html,
 body {
   max-width: 100vw;
@@ -24,6 +28,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  padding-top: var(--height-header);
 }
 
 aside,

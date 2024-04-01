@@ -1,20 +1,20 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { FiSun } from "react-icons/fi";
 import { BsMoon } from "react-icons/bs";
 import { HiOutlineSearch } from "react-icons/hi";
 import { RiShoppingCart2Line } from "react-icons/ri";
-
-import logo from "../../../public/img/JKDunkey-logo.svg";
+import useScrollDirection from "@/app/hooks/useScrollDirection";
 
 import styles from "./Header.module.scss";
 
 export const Header: React.FC = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const scrollDirection = useScrollDirection();
 
   useEffect(() => {
     setMounted(true);
@@ -25,7 +25,11 @@ export const Header: React.FC = () => {
   }
 
   return (
-    <header className={styles.root}>
+    <header
+      className={`${styles.root} ${
+        scrollDirection === "down" ? styles.root_hide : ""
+      }`}
+    >
       <nav className={styles.root__nav}>
         <button
           className={styles.root_switcher}
