@@ -11,6 +11,8 @@
 // }
 
 :root {
+  --color-dark: #121212;
+  --color-light: #ffffff;
   --height-header: 56px;
 }
 
@@ -21,14 +23,20 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
   padding-top: var(--height-header);
+}
+
+[data-theme="light"] body {
+  color: var(--color-dark);
+  background-color: white;
+}
+
+[data-theme="light"] nav {
+  background-color: white;
+}
+
+[data-theme="dark"] nav {
+  background-color: var(--color-dark);
 }
 
 aside,
@@ -85,5 +93,5 @@ svg {
 }
 
 [data-theme="light"] .logo path {
-  fill: black;
+  fill: var(--color-dark);
 }

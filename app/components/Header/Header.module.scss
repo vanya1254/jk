@@ -6,7 +6,6 @@
   z-index: 3;
   left: 0;
   top: 0;
-  background-color: white;
   transition: transform 0.2s linear;
 
   &__nav {
@@ -39,5 +38,33 @@
 
   &_hide {
     transform: translateY(calc(0px - var(--height-header)));
+  }
+
+  &__search {
+    position: absolute;
+    top: var(--height-header);
+    left: 0;
+
+    width: 100%;
+    padding: 10.5px 20px;
+
+    transition: transform 0.2s linear;
+
+    &_input {
+      width: 100%;
+      border: 1px solid;
+      border-radius: 4px;
+      padding: 4px 16px;
+    }
+
+    &_btn {
+      position: absolute;
+      right: 32px;
+      top: 20px;
+    }
+  }
+  &_searchHide {
+    transform: translateY(calc(0px - var(--height-header)));
+    z-index: -100;
   }
 }

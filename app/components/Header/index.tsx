@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { FiSun } from "react-icons/fi";
 import { BsMoon } from "react-icons/bs";
+import { TbListSearch } from "react-icons/tb";
 import { HiOutlineSearch } from "react-icons/hi";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import useScrollDirection from "@/app/hooks/useScrollDirection";
@@ -15,6 +16,7 @@ export const Header: React.FC = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const scrollDirection = useScrollDirection();
+  const [isSearchFieldHide, setIsSearchField] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -285,14 +287,33 @@ export const Header: React.FC = () => {
           </svg>
         </Link>
         <div className={styles.root__btns}>
-          <button className={styles.root__btns_search}>
-            <HiOutlineSearch />
+          <button
+            onClick={() => setIsSearchField((prev) => !prev)}
+            className={styles.root__btns_search}
+          >
+            <TbListSearch />
           </button>
           <button className={styles.root__btns_cart}>
             <RiShoppingCart2Line />
           </button>
         </div>
       </nav>
+      <div
+        className={`${styles.root__search} ${
+          !isSearchFieldHide && styles.root_searchHide
+        }`}
+      >
+        <input
+          className={styles.root__search_input}
+          type="text"
+          placeholder={"Search ..."}
+          autoFocus
+          disabled={!isSearchFieldHide}
+        />
+        <button className={styles.root__search_btn}>
+          <HiOutlineSearch />
+        </button>
+      </div>
     </header>
   );
 };
