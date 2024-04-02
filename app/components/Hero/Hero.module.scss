@@ -8,7 +8,6 @@
 
   padding: 80px 0;
   width: 100%;
-  background-color: $color;
   text-align: center;
 
   &_title {
@@ -27,14 +26,22 @@
       line-height: 1;
     }
   }
-  &_breadcrumbActive {
-    color: #909097;
+  &_breadcrumbDeactive {
+    color: $deactiveColor;
   }
 
   &_breadcrumbDivider {
-    color: #909097;
+    font-size: 12px;
+    color: $deactiveColor;
     line-height: 1;
     margin: 0 6px;
     margin-bottom: -1px;
   }
+}
+
+[data-theme="light"] .root {
+  background-color: $heroBgColorLight;
+}
+[data-theme="dark"] .root {
+  background-color: $heroBgColorDark;
 }

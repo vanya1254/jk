@@ -19,7 +19,7 @@ export const Hero: React.FC = () => {
             <li
               key={i}
               className={`${styles.root_breadcrumb} ${
-                i === crumbs.length - 1 ? "" : styles.root_breadcrumbActive
+                i === crumbs.length - 1 ? "" : styles.root_breadcrumbDeactive
               }`}
             >
               <Link href={`/${crumb === "Home" ? "" : crumb.toLowerCase()}`}>

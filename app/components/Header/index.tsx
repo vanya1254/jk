@@ -1,30 +1,18 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import { FiSun } from "react-icons/fi";
-import { BsMoon } from "react-icons/bs";
 import { TbListSearch } from "react-icons/tb";
 import { HiOutlineSearch } from "react-icons/hi";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import useScrollDirection from "@/app/hooks/useScrollDirection";
 
 import styles from "./Header.module.scss";
+import { ThemeSwitcher } from "../ThemeSwitcher";
 
 export const Header: React.FC = () => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
   const scrollDirection = useScrollDirection();
   const [isSearchFieldHide, setIsSearchField] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <header
@@ -33,12 +21,7 @@ export const Header: React.FC = () => {
       }`}
     >
       <nav className={styles.root__nav}>
-        <button
-          className={styles.root_switcher}
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        >
-          {theme === "dark" ? <FiSun /> : <BsMoon />}
-        </button>
+        <ThemeSwitcher className={styles.root_switcher} />
         <Link href={"/"} className={styles.root_logo}>
           <svg
             className="logo"

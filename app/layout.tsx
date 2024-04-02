@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Providers from "./Providers";
-import StoreProvider from "./StoreProvider";
+import Providers from "./providers/Providers";
+import StoreProvider from "./providers/StoreProvider";
 import { Header } from "./components";
 
 import "./globals.scss";
