@@ -15,6 +15,7 @@
     padding: 20px;
 
     position: relative;
+    z-index: 3;
   }
 
   &_switcher {
@@ -23,6 +24,7 @@
   &_logo {
     position: absolute;
     left: calc(50% - 20px);
+    z-index: 4;
 
     svg {
       width: 40px;
@@ -65,6 +67,12 @@
   }
   &_searchHide {
     transform: translateY(calc(0px - var(--height-header)));
-    z-index: -100;
+    z-index: -3;
   }
+}
+[data-theme="light"] .root__search {
+  background-color: var(--color-light);
+}
+[data-theme="dark"] .root__search {
+  background-color: var(--color-dark);
 }

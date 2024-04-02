@@ -28,11 +28,11 @@ body {
 
 [data-theme="light"] body {
   color: var(--color-dark);
-  background-color: white;
+  background-color: var(--color-light);
 }
 
 [data-theme="light"] nav {
-  background-color: white;
+  background-color: var(--color-light);
 }
 
 [data-theme="dark"] nav {
@@ -90,6 +90,11 @@ img,
 svg {
   max-width: 100%;
   height: auto;
+}
+
+ul,
+ul li {
+  list-style: none;
 }
 
 [data-theme="light"] .logo path {
