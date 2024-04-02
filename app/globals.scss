@@ -11,9 +11,12 @@
 // }
 
 :root {
+  --index: calc(1vw + 1vh);
   --color-dark: #121212;
   --color-light: #ffffff;
   --height-header: 56px;
+  --padding-hotizontal-mobile: 20px;
+  --padding-hotizontal-desktop: 10%;
 }
 
 html,
