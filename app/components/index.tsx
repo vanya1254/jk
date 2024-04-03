@@ -1,8 +1,9 @@
 //client
 
 export { ThemeSwitcher } from "./ThemeSwitcher";
+export { Header } from "./Header";
 
 //server
 
-export { Header } from "./Header";
 export { Hero } from "./Hero";
+export { SwiperSlider } from "./SwiperSlider";

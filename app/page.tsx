@@ -1,3 +1,4 @@
+import { SwiperSlider } from "./components";
 import { Hero } from "./components/Hero";
 import { SeeAllLayout } from "./layouts";
 
@@ -8,7 +9,7 @@ export default function Home() {
     <main className={styles.main}>
       <Hero />
       <SeeAllLayout title="Popular shoes" pathName="/sneakers">
-        <div>ff</div>
+        <SwiperSlider>{["dsad", "dsfds"]}</SwiperSlider>
       </SeeAllLayout>
     </main>
   );
