@@ -1,2 +1,33 @@
-.root {
+.root__header {
+  &_link {
+  }
+
+  &_img {
+    transition: opacity 0.7s linear;
+  }
+  &_imgHover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+}
+
+.root__footer {
+  text-align: center;
+  font-size: 14px;
+
+  &_title {
+    font-weight: 400;
+    padding: 7px 0;
+
+    a {
+      line-height: 1;
+    }
+  }
+
+  &_price {
+    font-weight: 700;
+    line-height: 30px;
+  }
 }

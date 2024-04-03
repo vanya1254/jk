@@ -4,6 +4,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard } from "swiper/modules";
 
+import styles from "./SwiperSlider.module.scss";
 import "swiper/css";
 
 type SwiperSliderPropsT = {
@@ -12,9 +13,16 @@ type SwiperSliderPropsT = {
 
 export const SwiperSlider: React.FC<SwiperSliderPropsT> = ({ children }) => {
   return (
-    <Swiper modules={[Keyboard]} spaceBetween={20} slidesPerView={"auto"}>
+    <Swiper
+      className={styles.root}
+      modules={[Keyboard]}
+      spaceBetween={20}
+      slidesPerView={"auto"}
+    >
       {children.map((child, i) => (
-        <SwiperSlide key={i}>{child}</SwiperSlide>
+        <SwiperSlide className={styles.root__slide} key={i}>
+          {child}
+        </SwiperSlide>
       ))}
     </Swiper>
   );

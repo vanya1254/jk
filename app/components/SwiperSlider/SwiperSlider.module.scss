@@ -1,0 +1,9 @@
+.root {
+  &__slide {
+    width: calc((100% / 2) - 15px);
+
+    @media (orientation: landscape) {
+      width: calc(100% / 4);
+    }
+  }
+}
