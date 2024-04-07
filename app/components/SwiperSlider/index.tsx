@@ -14,6 +14,7 @@ type SwiperSliderPropsT = {
 export const SwiperSlider: React.FC<SwiperSliderPropsT> = ({ children }) => {
   return (
     <Swiper
+      grabCursor={true}
       className={styles.root}
       modules={[Keyboard]}
       spaceBetween={20}

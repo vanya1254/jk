@@ -1,3 +1,6 @@
+import { ProductT, Status } from "@/lib/mainTypes";
+
 export interface ProductsState {
-  value: number;
+  products: ProductT[];
+  status: Status;
 }
