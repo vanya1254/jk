@@ -1,10 +1,12 @@
+import { CardProductSkeleton } from "./Skeletons/CardProductSkeleton";
 //client
 
 export { ThemeSwitcher } from "./ThemeSwitcher";
 export { Header } from "./Header";
 export { SwiperSlider } from "./SwiperSlider";
+export { CardProduct } from "./CardProduct";
 
 //server
 
 export { Hero } from "./Hero";
-export { CardProduct } from "./CardProduct";
+export { CardProductSkeleton } from "./Skeletons";

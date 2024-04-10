@@ -11,14 +11,13 @@ export const Hero: React.FC = () => {
       <h1 className={styles.root_title}>{crumbs[crumbs.length - 1]}</h1>
       <ul className={styles.root__breadcrumbs}>
         {crumbs.map((crumb, i) => (
-          <>
+          <React.Fragment key={i}>
             {i ? (
               <span className={styles.root_breadcrumbDivider}>{">"}</span>
             ) : (
               ""
             )}
             <li
-              key={i}
               className={`${styles.root_breadcrumb} ${
                 i === crumbs.length - 1 ? "" : styles.root_breadcrumbDeactive
               }`}
@@ -27,7 +26,7 @@ export const Hero: React.FC = () => {
                 {crumb}
               </Link>
             </li>
-          </>
+          </React.Fragment>
         ))}
       </ul>
     </section>
