@@ -13,6 +13,7 @@ import {
   SwiperSlider,
   Hero,
   CardProductSkeleton,
+  BestChoiceCard,
 } from "./components";
 import { SeeAllLayout } from "./layouts";
 
@@ -38,7 +39,7 @@ export default function Home() {
     <main className={styles.main}>
       <Hero />
       <SeeAllLayout title="Popular Shoes" pathName="/sneakers">
-        <SwiperSlider>
+        <SwiperSlider gap={20} slidesPerView={"auto"}>
           {status === Status.PENDING
             ? CardSkeletons
             : status === Status.REJECTED
@@ -46,8 +47,22 @@ export default function Home() {
             : CardProducts}
         </SwiperSlider>
       </SeeAllLayout>
-      <SeeAllLayout title="New Arrivals" pathName="/sneakers">
-        []
+      <SeeAllLayout
+        title="New Arrivals"
+        pathName={`/sneakers?brand=${products[7].brandName}`}
+      >
+        {status === Status.PENDING ? (
+          "CardSkeletons"
+        ) : status === Status.REJECTED ? (
+          "ERROR"
+        ) : (
+          <BestChoiceCard
+            title={products[7].name}
+            slug={products[7].slug}
+            price={products[7].specialDisplayPriceCents}
+            img={products[7].mainPictureUrl}
+          />
+        )}
       </SeeAllLayout>
     </main>
   );

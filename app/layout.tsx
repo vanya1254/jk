@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { IBM_Plex_Mono } from "next/font/google";
 import Providers from "./providers/Providers";
 import StoreProvider from "./providers/StoreProvider";
 import { Header } from "./components";
 
 import "./globals.scss";
 
-const poppins = Poppins({
+const IBMPlexMono = IBM_Plex_Mono({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
 });
@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={IBMPlexMono.className}>
         <StoreProvider>
           <Providers>
             <Header />

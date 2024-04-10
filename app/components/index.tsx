@@ -1,4 +1,3 @@
-import { CardProductSkeleton } from "./Skeletons/CardProductSkeleton";
 //client
 
 export { ThemeSwitcher } from "./ThemeSwitcher";
@@ -10,3 +9,4 @@ export { CardProduct } from "./CardProduct";
 
 export { Hero } from "./Hero";
 export { CardProductSkeleton } from "./Skeletons";
+export { BestChoiceCard } from "./BestChoiceCard";
