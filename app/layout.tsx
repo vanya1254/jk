@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import Providers from "./providers/Providers";
 import StoreProvider from "./providers/StoreProvider";
-import { Header } from "./components";
+import { Footer, Header } from "./components";
 
 import "./globals.scss";
 
@@ -28,6 +28,7 @@ export default function RootLayout({
           <Providers>
             <Header />
             {children}
+            <Footer />
           </Providers>
         </StoreProvider>
       </body>

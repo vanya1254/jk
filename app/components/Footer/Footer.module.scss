@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+
+  &_link {
+    transition: $linkTransition;
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &_pic {
+    display: block;
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+[data-theme="light"] .root {
+  background-color: $heroBgColorLight;
+}
+
+[data-theme="dark"] .root {
+  background-color: $heroBgColorDark;
+}
+
+[data-theme="light"] .root_pic svg path {
+  fill: var(--color-dark);
+}
+
+[data-theme="dark"] .root_pic svg path {
+  fill: var(--color-light);
+}

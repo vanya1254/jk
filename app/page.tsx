@@ -49,7 +49,7 @@ export default function Home() {
       </SeeAllLayout>
       <SeeAllLayout
         title="New Arrivals"
-        pathName={`/sneakers?brand=${products[7].brandName}`}
+        pathName={`/sneakers?brand={products[7].brandName}`}
       >
         {status === Status.PENDING ? (
           "CardSkeletons"
@@ -57,6 +57,7 @@ export default function Home() {
           "ERROR"
         ) : (
           <BestChoiceCard
+            marginTop="30px"
             title={products[7].name}
             slug={products[7].slug}
             price={products[7].specialDisplayPriceCents}

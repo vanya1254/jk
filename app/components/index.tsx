@@ -10,3 +10,4 @@ export { CardProduct } from "./CardProduct";
 export { Hero } from "./Hero";
 export { CardProductSkeleton } from "./Skeletons";
 export { BestChoiceCard } from "./BestChoiceCard";
+export { Footer } from "./Footer";
