@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { fetchProductsAll } from "@/lib/features/products/slice";
@@ -18,8 +19,10 @@ import {
 import { SeeAllLayout } from "./layouts";
 
 import styles from "./page.module.scss";
+import { pathPage } from "./constants";
 
 export default function Home() {
+  const pathName = usePathname();
   const dispatch = useAppDispatch();
   const { products, status } = useAppSelector(productsSelector);
 
@@ -37,7 +40,7 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Hero />
+      <Hero crumbs={JSON.parse(pathPage)[pathName]} />
       <SeeAllLayout title="Popular Shoes" pathName="/sneakers">
         <SwiperSlider gap={20} slidesPerView={"auto"}>
           {status === Status.PENDING

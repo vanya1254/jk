@@ -3,9 +3,11 @@ import Link from "next/link";
 
 import styles from "./Hero.module.scss";
 
-export const Hero: React.FC = () => {
-  const crumbs = ["Home", "Sneakers"];
+type HeroPropsT = {
+  crumbs: string[];
+};
 
+export const Hero: React.FC<HeroPropsT> = ({ crumbs }) => {
   return (
     <section className={styles.root}>
       <h1 className={styles.root_title}>{crumbs[crumbs.length - 1]}</h1>
