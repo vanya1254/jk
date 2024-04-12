@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px var(--padding-hotizontal-mobile);
+  margin-bottom: 50px;
   width: 100%;
 
   &__btns {
@@ -18,9 +19,10 @@
 
     &_filters,
     details {
-      cursor: pointer;
+      text-transform: uppercase;
       border-radius: 6px;
       padding: 7px 14px;
+      cursor: pointer;
     }
   }
 
@@ -32,11 +34,43 @@
   &__details {
     position: absolute;
     width: max-content;
+
     summary {
       list-style: none;
+
+      svg {
+        margin-left: 8px;
+        transition: transform $linkTransition;
+      }
+    }
+
+    summary,
+    &__content {
+      display: grid;
+      grid-template-columns: 86px auto;
+      row-gap: 6px;
     }
 
     &__content {
+      padding-top: 10px;
+
+      li {
+        grid-column-start: 2;
+
+        button {
+          line-height: normal;
+          text-transform: uppercase;
+          transition: text-decoration $linkTransition;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    &:hover svg {
+      transform: rotate(-180deg);
     }
   }
 

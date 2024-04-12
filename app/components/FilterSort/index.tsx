@@ -1,33 +1,60 @@
-import React from "react";
+import React, { useId } from "react";
 
 import styles from "./FilterSort.module.scss";
+import { sortTypes } from "@/app/constants";
 
-export const FilterSort: React.FC = () => {
+type FilterSortPropsT = {
+  count: number;
+};
+
+export const FilterSort: React.FC<FilterSortPropsT> = ({ count }) => {
+  const idDetails = useId();
+
+  const onMouseOver = (e: React.MouseEvent<HTMLElement>) => {
+    const details = e.currentTarget;
+    details?.setAttribute("open", "");
+  };
+
+  const onMouseOut = (e: React.MouseEvent<HTMLElement>) => {
+    const details = e.currentTarget;
+    details?.removeAttribute("open");
+  };
+
   return (
     <div className={styles.root}>
       <div className={styles.root__btns}>
         <button className={styles.root__btns_filters}>Filters</button>
         <div className={styles.root__container}>
-          <details className={styles.root__details}>
-            <summary>
-              Sort By: {`Price Low`}
-              <svg viewBox="0 0 6 4" width="15px" height="10px">
-                <path
-                  d="M5.27 0L2.999 2.509.729 0 0 .684 2.999 4l3-3.316z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                ></path>
-              </svg>
+          <details
+            id={idDetails}
+            onMouseOver={onMouseOver}
+            onMouseOut={onMouseOut}
+            className={styles.root__details}
+          >
+            <summary id={idDetails} onClick={(e) => e.preventDefault()}>
+              Sort By:
+              <span>
+                {`Price ↓`}
+                <svg viewBox="0 0 6 4" width="15px" height="10px">
+                  <path
+                    d="M5.27 0L2.999 2.509.729 0 0 .684 2.999 4l3-3.316z"
+                    fill="currentColor"
+                    fillRule="evenodd"
+                  ></path>
+                </svg>
+              </span>
             </summary>
             <ul className={styles.root__details__content}>
-              <li>1</li>
-              <li>1</li>
-              <li>1</li>
+              {sortTypes.map((type, i) => (
+                <li key={i}>
+                  <button>{type}</button>
+                </li>
+              ))}
             </ul>
           </details>
         </div>
       </div>
-      <p className={styles.root_count}>[{3}]</p>
+      <p className={styles.root_count}>[{count}]</p>
     </div>
   );
 };
