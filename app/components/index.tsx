@@ -4,6 +4,8 @@ export { ThemeSwitcher } from "./ThemeSwitcher";
 export { Header } from "./Header";
 export { SwiperSlider } from "./SwiperSlider";
 export { CardProduct } from "./CardProduct";
+export { FilterSort } from "./FilterSort";
+export { Filters } from "./Filters";
 
 //server
 

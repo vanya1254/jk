@@ -6,6 +6,18 @@
   box-sizing: border-box;
 }
 
+* {
+  &::selection {
+    background: #897f7b;
+  }
+  &::-moz-selection {
+    background: #897f7b;
+  }
+  &::-webkit-user-select {
+    background: #897f7b;
+  }
+}
+
 // html {
 //   transition: color-scheme 0.8s linear;
 // }
@@ -14,6 +26,7 @@
   --index: calc(1vw + 1vh);
   --color-dark: #121212;
   --color-light: #ffffff;
+  --color-brown: #897f7b;
   --height-header: 56px;
   --padding-hotizontal-mobile: 20px;
   --padding-hotizontal-desktop: 10%;

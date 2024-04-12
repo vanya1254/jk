@@ -3,7 +3,12 @@
 import { usePathname } from "next/navigation";
 import { Status } from "../../lib/mainTypes";
 
-import { CardProduct, Hero, CardProductSkeleton } from "../components";
+import {
+  CardProduct,
+  Hero,
+  CardProductSkeleton,
+  FilterSort,
+} from "../components";
 import { SeeAllLayout } from "../layouts";
 import { pathPage } from "../constants";
 
@@ -15,6 +20,7 @@ export default function Sneakers() {
   return (
     <main className={styles.main}>
       <Hero crumbs={JSON.parse(pathPage)[pathName]} />
+      <FilterSort />
     </main>
   );
 }

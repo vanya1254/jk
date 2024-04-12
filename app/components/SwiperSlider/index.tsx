@@ -25,6 +25,7 @@ export const SwiperSlider: React.FC<SwiperSliderPropsT> = ({
       modules={[Keyboard]}
       spaceBetween={gap}
       slidesPerView={slidesPerView}
+      keyboard
     >
       {children.map((child, i) => (
         <SwiperSlide className={styles.root__slide} key={i}>
