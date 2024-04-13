@@ -29,6 +29,7 @@
   &__container {
     position: relative;
     min-height: 34px;
+    z-index: 4;
   }
 
   &__details {
@@ -38,7 +39,17 @@
     summary {
       list-style: none;
 
+      span {
+        display: none;
+
+        @media (min-width: 425px) {
+          display: block;
+        }
+      }
+
       svg {
+        grid-column: none;
+        align-self: center;
         margin-left: 8px;
         transition: transform $linkTransition;
       }
@@ -47,8 +58,11 @@
     summary,
     &__content {
       display: grid;
-      grid-template-columns: 86px auto;
       row-gap: 6px;
+
+      @media (min-width: 425px) {
+        grid-template-columns: 86px auto;
+      }
     }
 
     &__content {

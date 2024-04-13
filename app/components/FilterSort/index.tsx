@@ -33,16 +33,14 @@ export const FilterSort: React.FC<FilterSortPropsT> = ({ count }) => {
           >
             <summary id={idDetails} onClick={(e) => e.preventDefault()}>
               Sort By:
-              <span>
-                {`Price ↓`}
-                <svg viewBox="0 0 6 4" width="15px" height="10px">
-                  <path
-                    d="M5.27 0L2.999 2.509.729 0 0 .684 2.999 4l3-3.316z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  ></path>
-                </svg>
-              </span>
+              <span>{`Price ↓`}</span>
+              <svg viewBox="0 0 6 4" width="15px" height="10px">
+                <path
+                  d="M5.27 0L2.999 2.509.729 0 0 .684 2.999 4l3-3.316z"
+                  fill="currentColor"
+                  fillRule="evenodd"
+                ></path>
+              </svg>
             </summary>
             <ul className={styles.root__details__content}>
               {sortTypes.map((type, i) => (
