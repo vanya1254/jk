@@ -9,12 +9,15 @@
 * {
   &::selection {
     background: #897f7b;
+    color: var(--color-light);
   }
   &::-moz-selection {
     background: #897f7b;
+    color: var(--color-light);
   }
   &::-webkit-user-select {
     background: #897f7b;
+    color: var(--color-light);
   }
 }
 

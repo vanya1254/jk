@@ -4,21 +4,14 @@ import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Status } from "../../lib/mainTypes";
 
-import {
-  CardProduct,
-  Hero,
-  CardProductSkeleton,
-  FilterSort,
-  Cards,
-} from "../components";
-import { SeeAllLayout } from "../layouts";
+import { Hero, CardProductSkeleton, FilterSort, Cards } from "../components";
 import { pathPage } from "../constants";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { productsSelector } from "@/lib/features/products/selectors";
+import { fetchProductsAll } from "@/lib/features/products/slice";
 
 import styles from "../page.module.scss";
-import { fetchProductsAll } from "@/lib/features/products/slice";
 
 export default function Sneakers() {
   const pathName = usePathname();

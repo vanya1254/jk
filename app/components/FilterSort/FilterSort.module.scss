@@ -20,7 +20,7 @@
     &_filters,
     details {
       text-transform: uppercase;
-      border-radius: 6px;
+      border-radius: $borderRadiusBtn;
       padding: 7px 14px;
       cursor: pointer;
     }
