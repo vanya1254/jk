@@ -1,0 +1,16 @@
+@import "../../styles/variables";
+
+.root {
+  line-height: normal;
+  text-transform: uppercase;
+  border-radius: $borderRadiusBtn;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+[data-theme="light"] .root {
+  background-color: $heroBgColorLight;
+}
+[data-theme="dark"] .root {
+  background-color: $heroBgColorDark;
+}

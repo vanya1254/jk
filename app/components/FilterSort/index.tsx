@@ -3,7 +3,7 @@
 import React, { useId, useState } from "react";
 
 import { sortTypes } from "@/app/constants";
-import { Filters } from "../";
+import { ButtonCustom, Filters } from "../";
 
 import styles from "./FilterSort.module.scss";
 
@@ -29,12 +29,16 @@ export const FilterSort: React.FC<FilterSortPropsT> = ({ count }) => {
     <>
       <div className={styles.root}>
         <div className={styles.root__btns}>
-          <button
+          {/* <button
             onClick={() => setIsOpenFilters((prev) => !prev)}
             className={styles.root__btns_filters}
           >
             Filters
-          </button>
+          </button> */}
+          <ButtonCustom
+            onClick={() => setIsOpenFilters((prev) => !prev)}
+            text={`Filters`}
+          />
           <div className={styles.root__container}>
             <details
               id={idDetails}

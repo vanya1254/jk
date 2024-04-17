@@ -14,3 +14,4 @@ export { CardProductSkeleton } from "./Skeletons";
 export { BestChoiceCard } from "./BestChoiceCard";
 export { Footer } from "./Footer";
 export { Cards } from "./Cards";
+export { ButtonCustom } from "./ButtonCustom";

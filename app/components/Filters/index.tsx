@@ -32,27 +32,13 @@ export const Filters: React.FC<FiltersPropsT> = ({ isOpen, setIsOpen }) => {
           <details className={styles.root__details}>
             <summary>
               <span>{filter.name}</span>
-              {true ? (
-                <svg viewBox="0 0 6 6" width="1em" height="1em">
-                  <path
-                    d="M3.4 0v2.599L6 2.6v.8l-2.6-.001V6h-.8V3.399L0 3.4v-.8l2.6-.001V0h.8z"
-                    fill="currentColor"
-                    fillRule="nonzero"
-                  ></path>
-                </svg>
-              ) : (
-                <svg viewBox="0 0 6 1" width="1em" height="1em">
-                  <path
-                    d="M0 0h6v1H0z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  ></path>
-                </svg>
-              )}
+              <picture className={styles.root__details_svg}></picture>
             </summary>
             <ul className={styles.root__details__content}>
               {filter.value.map((value, i) => (
-                <li key={i}>{value}</li>
+                <li key={i}>
+                  <button className={"d"}>{value}</button>
+                </li>
               ))}
             </ul>
           </details>

@@ -13,11 +13,6 @@
     align-items: center;
     gap: 6px;
 
-    &_filters {
-      line-height: normal;
-    }
-
-    &_filters,
     details {
       text-transform: uppercase;
       border-radius: $borderRadiusBtn;
@@ -92,16 +87,10 @@
   }
 }
 
-[data-theme="light"] .root__btns_filters {
-  background-color: $heroBgColorLight;
-}
 [data-theme="light"] .root__btns details {
   background-color: $heroBgColorLight;
 }
 
-[data-theme="dark"] .root__btns_filters {
-  background-color: $heroBgColorDark;
-}
 [data-theme="dark"] .root__btns details {
   background-color: $heroBgColorDark;
 }
