@@ -1,4 +1,6 @@
-import React, { useId } from "react";
+"use client";
+
+import React, { useId, useState } from "react";
 
 import { sortTypes } from "@/app/constants";
 import { Filters } from "../";
@@ -11,6 +13,7 @@ type FilterSortPropsT = {
 
 export const FilterSort: React.FC<FilterSortPropsT> = ({ count }) => {
   const idDetails = useId();
+  const [isOpenFilters, setIsOpenFilters] = useState<boolean>(false);
 
   const onMouseOver = (e: React.MouseEvent<HTMLElement>) => {
     const details = e.currentTarget;
@@ -26,7 +29,12 @@ export const FilterSort: React.FC<FilterSortPropsT> = ({ count }) => {
     <>
       <div className={styles.root}>
         <div className={styles.root__btns}>
-          <button className={styles.root__btns_filters}>Filters</button>
+          <button
+            onClick={() => setIsOpenFilters((prev) => !prev)}
+            className={styles.root__btns_filters}
+          >
+            Filters
+          </button>
           <div className={styles.root__container}>
             <details
               id={idDetails}
@@ -57,7 +65,7 @@ export const FilterSort: React.FC<FilterSortPropsT> = ({ count }) => {
         </div>
         <p className={styles.root_count}>[{count}]</p>
       </div>
-      <Filters />
+      <Filters isOpen={isOpenFilters} setIsOpen={setIsOpenFilters} />
     </>
   );
 };

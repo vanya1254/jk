@@ -25,16 +25,22 @@
 //   transition: color-scheme 0.8s linear;
 // }
 
+[details-content] {
+  transition: all 1s linear;
+}
+
 :root {
   --index: calc(1vw + 1vh);
   --color-dark: #121212;
   --color-light: #ffffff;
   --color-brown: #897f7b;
+  --swiper-theme-color: var(--color-dark);
+  --color-scrollbar-track: rgb(225, 226, 227);
+
   --height-header: 56px;
+  --max-height-filters: 60vh;
   --padding-hotizontal-mobile: 20px;
   --padding-hotizontal-desktop: 10%;
-
-  --swiper-theme-color: var(--color-dark);
 }
 
 html,

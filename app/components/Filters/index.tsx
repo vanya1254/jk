@@ -3,25 +3,26 @@ import React from "react";
 import styles from "./Filters.module.scss";
 import { filterTypes } from "@/app/constants";
 
-export const Filters: React.FC = () => {
-  const onTouchMove = (e: React.MouseEvent<HTMLElement>) => {
-    const section = e.currentTarget;
-    // line.style.opacity = 0;
-    section.style.transform = "translate(0px, 30px)";
-  };
+type FiltersPropsT = {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-  const onTouchEnd = (e: React.TouchEvent<HTMLElement>) => {
-    const section = e.currentTarget;
-    // line.style.opacity = 0;
-    // section.style.transform = "none";
-  };
-
+export const Filters: React.FC<FiltersPropsT> = ({ isOpen, setIsOpen }) => {
   return (
-    <section style={{ height: "50vh" }} className={styles.root}>
+    <section
+      className={`${styles.root}`}
+      style={{
+        transform: `${
+          isOpen
+            ? "translate(0vh, 0vh)"
+            : "translate(0vh, var(--max-height-filters))"
+        }`,
+      }}
+    >
       <div
         className={styles.root_moveMe}
-        // onMouseDown={onTouchMove}
-        // onTouchEnd={onTouchEnd}
+        onClick={() => setIsOpen((prev) => !prev)}
       >
         <hr />
       </div>
