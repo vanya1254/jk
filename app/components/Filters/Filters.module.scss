@@ -39,7 +39,7 @@
 
   &_title {
     font-weight: 500;
-    padding-bottom: 10px;
+    padding-bottom: 28px;
   }
 
   &__container {
@@ -77,6 +77,10 @@
       padding: 30px 0;
       overflow: auto;
       opacity: 0;
+
+      &_child {
+        width: fit-content;
+      }
     }
   }
 

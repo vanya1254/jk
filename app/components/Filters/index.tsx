@@ -1,7 +1,9 @@
 import React from "react";
 
-import styles from "./Filters.module.scss";
 import { filterTypes } from "@/app/constants";
+import { ButtonCustom, SwiperSlider } from "../";
+
+import styles from "./Filters.module.scss";
 
 type FiltersPropsT = {
   isOpen: boolean;
@@ -34,13 +36,16 @@ export const Filters: React.FC<FiltersPropsT> = ({ isOpen, setIsOpen }) => {
               <span>{filter.name}</span>
               <picture className={styles.root__details_svg}></picture>
             </summary>
-            <ul className={styles.root__details__content}>
+            <SwiperSlider
+              classNameChild={styles.root__details__content_child}
+              className={styles.root__details__content}
+              gap={10}
+              slidesPerView={"auto"}
+            >
               {filter.value.map((value, i) => (
-                <li key={i}>
-                  <button className={"d"}>{value}</button>
-                </li>
+                <ButtonCustom key={i} onClick={() => null} text={value} />
               ))}
-            </ul>
+            </SwiperSlider>
           </details>
         </div>
       ))}
