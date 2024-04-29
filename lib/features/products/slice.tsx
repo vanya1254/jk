@@ -3,11 +3,11 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { ProductsState } from "./types";
 import { ProductT, Status } from "@/lib/mainTypes";
 
-export const fetchProductsAll = createAsyncThunk(
-  "products/fetchProductsAll",
-  async () => {
+export const fetchProducts = createAsyncThunk(
+  "products/fetchProducts",
+  async (params: string) => {
     const response = await fetch(
-      `https://94bd9fe6fad33179.mokky.dev/sneakers?page=1&limit=10`
+      `https://94bd9fe6fad33179.mokky.dev/sneakers${params}`
     );
 
     const data = await response.json();
@@ -28,17 +28,17 @@ export const productsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchProductsAll.pending, (state) => {
+      .addCase(fetchProducts.pending, (state) => {
         state.status = Status.PENDING;
       })
       .addCase(
-        fetchProductsAll.fulfilled,
+        fetchProducts.fulfilled,
         (state, action: PayloadAction<ProductT[]>) => {
           state.products = action.payload;
           state.status = Status.FULFILLED;
         }
       )
-      .addCase(fetchProductsAll.rejected, (state) => {
+      .addCase(fetchProducts.rejected, (state) => {
         state.products = [];
         state.status = Status.REJECTED;
       });

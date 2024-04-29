@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { fetchProductsAll } from "@/lib/features/products/slice";
+import { fetchProducts } from "@/lib/features/products/slice";
 import { productsSelector } from "@/lib/features/products/selectors";
 
 import { Status } from "../lib/mainTypes";
@@ -19,7 +19,7 @@ import {
 import { SeeAllLayout } from "./layouts";
 
 import styles from "./page.module.scss";
-import { pathPage } from "./constants";
+import { pathPage, selectionsFetch } from "./constants";
 
 export default function Home() {
   const pathName = usePathname();
@@ -27,7 +27,7 @@ export default function Home() {
   const { products, status } = useAppSelector(productsSelector);
 
   useEffect(() => {
-    dispatch(fetchProductsAll());
+    dispatch(fetchProducts(`?limit=10&${selectionsFetch.home.cards}`));
   }, []);
 
   const CardSkeletons = [...new Array(4)].map((_, i) => (
@@ -63,7 +63,7 @@ export default function Home() {
             marginTop="30px"
             title={products[7].name}
             slug={products[7].slug}
-            price={products[7].specialDisplayPriceCents}
+            price={products[7].priceCents}
             img={products[7].mainPictureUrl}
           />
         )}

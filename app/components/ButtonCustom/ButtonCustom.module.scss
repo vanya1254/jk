@@ -5,7 +5,14 @@
   text-transform: uppercase;
   border-radius: $borderRadiusBtn;
   padding: 7px 14px;
+
+  transition: $linkTransition;
   cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-brown) !important;
+    color: var(--color-light);
+  }
 }
 
 [data-theme="light"] .root {

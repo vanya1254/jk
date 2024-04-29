@@ -21,7 +21,7 @@ export type ProductT = {
   releaseDate: string;
   sizeRange: SizeOptionT[];
   sizeUnit: string;
-  specialDisplayPriceCents: number;
+  priceCents: number;
   upperMaterial: string;
   sizeOptions: [];
   category: string[];

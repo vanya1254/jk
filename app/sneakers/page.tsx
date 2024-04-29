@@ -1,30 +1,60 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { usePathname } from "next/navigation";
+import React, { useCallback, useEffect } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Status } from "../../lib/mainTypes";
 
 import { Hero, CardProductSkeleton, FilterSort, Cards } from "../components";
-import { pathPage } from "../constants";
+import { pathPage, selectionsFetch } from "../constants";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { productsSelector } from "@/lib/features/products/selectors";
-import { fetchProductsAll } from "@/lib/features/products/slice";
+import { fetchProducts } from "@/lib/features/products/slice";
 
 import styles from "../page.module.scss";
 
 export default function Sneakers() {
   const pathName = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
   const { products, status } = useAppSelector(productsSelector);
 
+  const getFilters = async () => {};
+
   useEffect(() => {
-    dispatch(fetchProductsAll());
-  }, []);
+    if (searchParams.toString()) {
+      dispatch(
+        fetchProducts(
+          `?page=1&${selectionsFetch.sneakers.cards}&${searchParams.toString()}`
+        )
+      );
+    } else {
+      dispatch(fetchProducts(`?page=1&${selectionsFetch.sneakers.cards}`));
+    }
+    console.log(
+      `?page=1&${selectionsFetch.sneakers.cards}&${searchParams.toString()}`
+    );
+  }, [searchParams]);
+  console.log(searchParams, pathName, searchParams);
 
   const CardSkeletons = [...new Array(4)].map((_, i) => (
     <CardProductSkeleton key={i} />
   ));
+
+  const clearParams = () => {
+    router.push(pathName);
+  };
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
 
   return (
     <main className={styles.main}>
@@ -37,6 +67,7 @@ export default function Sneakers() {
       ) : (
         "ERROR"
       )}
+      <button onClick={clearParams}>fff</button>
     </main>
   );
 }

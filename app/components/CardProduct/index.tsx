@@ -51,7 +51,7 @@ export const CardProduct: React.FC<CardProductPropsT> = ({ product }) => {
           <Link href={`/sneakers/${product.slug}`}>{product.name}</Link>
         </h4>
         <span className={styles.root__footer_price}>{`$${(
-          product.specialDisplayPriceCents / 100
+          product.priceCents / 100
         ).toFixed(2)}`}</span>
       </div>
     </article>

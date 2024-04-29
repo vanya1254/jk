@@ -4,6 +4,8 @@ import { filterTypes } from "@/app/constants";
 import { ButtonCustom, SwiperSlider } from "../";
 
 import styles from "./Filters.module.scss";
+import { useAppSelector } from "@/lib/hooks";
+import { filtersSelector } from "@/lib/features/filters/selectors";
 
 type FiltersPropsT = {
   isOpen: boolean;
@@ -11,6 +13,8 @@ type FiltersPropsT = {
 };
 
 export const Filters: React.FC<FiltersPropsT> = ({ isOpen, setIsOpen }) => {
+  const { filters, status } = useAppSelector(filtersSelector);
+
   return (
     <section
       className={`${styles.root}`}
