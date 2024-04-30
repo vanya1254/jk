@@ -7,7 +7,7 @@ export const fetchFilters = createAsyncThunk<FiltersT[], FetchFiltersParams>(
   "filters/fetchFilters",
   async ({ path, params }) => {
     const response = await fetch(
-      `https://94bd9fe6fad33179.mokky.dev${path}${params}`
+      `https://94bd9fe6fad33179.mokky.dev${path}?${params}`
     );
     const data = await response.json();
 

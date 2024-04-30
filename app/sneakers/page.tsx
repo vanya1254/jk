@@ -20,8 +20,6 @@ export default function Sneakers() {
   const dispatch = useAppDispatch();
   const { products, status } = useAppSelector(productsSelector);
 
-  const getFilters = async () => {};
-
   useEffect(() => {
     if (searchParams.toString()) {
       dispatch(

@@ -1,11 +1,15 @@
-import React from "react";
+"use client";
 
-import { filterTypes } from "@/app/constants";
+import React, { useEffect, useState } from "react";
+
+import { filterNames, filterTypes } from "@/app/constants";
 import { ButtonCustom, SwiperSlider } from "../";
 
-import styles from "./Filters.module.scss";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { filtersSelector } from "@/lib/features/filters/selectors";
+
+import styles from "./Filters.module.scss";
+import getMatrixFilters from "@/app/utils/getMatrixFilters";
 
 type FiltersPropsT = {
   isOpen: boolean;
@@ -13,7 +17,30 @@ type FiltersPropsT = {
 };
 
 export const Filters: React.FC<FiltersPropsT> = ({ isOpen, setIsOpen }) => {
+  const dispatch = useAppDispatch();
   const { filters, status } = useAppSelector(filtersSelector);
+  const [filtersTypes, setFiltersTypes] = useState(filterTypes);
+
+  const getFiltersTypes = () => {
+    if (filters && filters.length) {
+      const filtersNew = getMatrixFilters(filters);
+
+      setFiltersTypes(() => {
+        const updated = filterTypes.map((filter, i) => {
+          filter.value = filtersNew[i];
+
+          return filter;
+        });
+
+        return updated;
+      });
+    }
+    console.log(filtersTypes);
+  };
+
+  useEffect(() => {
+    getFiltersTypes();
+  }, []);
 
   return (
     <section
@@ -33,7 +60,7 @@ export const Filters: React.FC<FiltersPropsT> = ({ isOpen, setIsOpen }) => {
         <hr />
       </div>
       <h4 className={styles.root_title}>Filters</h4>
-      {filterTypes.map((filter, i) => (
+      {filtersTypes.map((filter, i) => (
         <div key={i} className={styles.root__container}>
           <details className={styles.root__details}>
             <summary>
