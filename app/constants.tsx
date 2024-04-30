@@ -62,9 +62,6 @@ export const filterTypes = [
   { name: "Gender", value: ["man", "woman"] },
 ];
 
-export const filterNames = ["Brands", "Colors", "Categories"];
-export const fetchNames = ["brandName", "color", "category"];
-
 export const selectionsFetch = {
   home: {
     cards:
@@ -73,7 +70,6 @@ export const selectionsFetch = {
   sneakers: {
     cards:
       "_select=slug,mainPictureUrl,name,productTemplateExternalPictures,priceCents,id",
-    filters: "_select=color,brandName,category",
   },
   sneakersSlug: { cards: "_select=id" },
 };

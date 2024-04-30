@@ -5,15 +5,11 @@ import { Status } from "@/lib/mainTypes";
 
 export const fetchFilters = createAsyncThunk<FiltersT[], FetchFiltersParams>(
   "filters/fetchFilters",
-  async ({ path, params }) => {
-    const response = await fetch(
-      `https://94bd9fe6fad33179.mokky.dev${path}?${params}`
-    );
+  async ({ path }) => {
+    const response = await fetch(`https://94bd9fe6fad33179.mokky.dev${path}`);
     const data = await response.json();
 
-    const { items } = await data;
-
-    return items as FiltersT[];
+    return data as FiltersT[];
   }
 );
 
@@ -29,6 +25,7 @@ export const filtersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchFilters.pending, (state) => {
+        state.filters = [];
         state.status = Status.PENDING;
       })
       .addCase(

@@ -1,6 +1,9 @@
 import { Status } from "@/lib/mainTypes";
 
-export type FiltersT = Record<string, string>;
+export type FiltersT = {
+  name: string;
+  value: string[];
+};
 
 export interface FiltersState {
   filters: FiltersT[];
@@ -9,5 +12,4 @@ export interface FiltersState {
 
 export type FetchFiltersParams = {
   path: string;
-  params: string;
 };

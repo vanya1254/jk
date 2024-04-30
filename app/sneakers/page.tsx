@@ -12,6 +12,7 @@ import { productsSelector } from "@/lib/features/products/selectors";
 import { fetchProducts } from "@/lib/features/products/slice";
 
 import styles from "../page.module.scss";
+import { fetchFilters } from "@/lib/features/filters/slice";
 
 export default function Sneakers() {
   const pathName = usePathname();
@@ -23,18 +24,24 @@ export default function Sneakers() {
   useEffect(() => {
     if (searchParams.toString()) {
       dispatch(
+        fetchFilters({
+          path: "/filters-all",
+        })
+      );
+      dispatch(
         fetchProducts(
           `?page=1&${selectionsFetch.sneakers.cards}&${searchParams.toString()}`
         )
       );
     } else {
+      dispatch(
+        fetchFilters({
+          path: "/filters-all",
+        })
+      );
       dispatch(fetchProducts(`?page=1&${selectionsFetch.sneakers.cards}`));
     }
-    console.log(
-      `?page=1&${selectionsFetch.sneakers.cards}&${searchParams.toString()}`
-    );
   }, [searchParams]);
-  console.log(searchParams, pathName, searchParams);
 
   const CardSkeletons = [...new Array(4)].map((_, i) => (
     <CardProductSkeleton key={i} />
