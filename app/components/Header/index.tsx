@@ -278,12 +278,16 @@ export const Header: React.FC = () => {
           </svg>
         </Link>
         <div className={styles.root__btns}>
-          <button
-            onClick={() => setIsSearchField((prev) => !prev)}
-            className={styles.root__btns_search}
-          >
-            <TbListSearch />
-          </button>
+          {pathName.includes("/sneakers") ? (
+            <button
+              onClick={() => setIsSearchField((prev) => !prev)}
+              className={styles.root__btns_search}
+            >
+              <TbListSearch />
+            </button>
+          ) : (
+            ""
+          )}
           <button className={styles.root__btns_cart}>
             <RiShoppingCart2Line />
           </button>
