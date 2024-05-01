@@ -32,12 +32,14 @@ export const Filters: React.FC<FiltersPropsT> = ({
 
   const onClickCategory = (i: number, value: string) => {
     const newCategory = activeCategory.map((category) => ({ ...category }));
-    newCategory[i].value = [value];
+
+    if (value !== activeCategory[i].value[0]) {
+      newCategory[i].value = [value];
+    } else {
+      newCategory[i].value = [""];
+    }
 
     dispatch(setActiveCategory(newCategory));
-    // changeParams(
-    //   activeCategory.map((cat) => `${cat.path}=${cat.value}`).join("&")
-    // );
     changeParams(newCategory[i].path, newCategory[i].value[0]);
   };
 
@@ -78,6 +80,11 @@ export const Filters: React.FC<FiltersPropsT> = ({
                       key={j}
                       onClick={() => onClickCategory(i, value)}
                       text={value}
+                      className={`${
+                        value === activeCategory[i].value[0]
+                          ? styles.root__details_btnActive
+                          : ""
+                      }`}
                     />
                   ))}
                 </SwiperSlider>

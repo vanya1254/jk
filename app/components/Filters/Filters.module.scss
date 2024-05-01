@@ -82,6 +82,10 @@
         width: fit-content;
       }
     }
+
+    &_btnActive {
+      background-color: var(--color-green) !important;
+    }
   }
 
   &_clearAll {
