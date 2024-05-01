@@ -9,10 +9,18 @@ import useScrollDirection from "@/app/hooks/useScrollDirection";
 
 import styles from "./Header.module.scss";
 import { ThemeSwitcher } from "../ThemeSwitcher";
+import { usePathname, useRouter } from "next/navigation";
 
 export const Header: React.FC = () => {
+  const pathName = usePathname();
+  const router = useRouter();
   const scrollDirection = useScrollDirection();
   const [isSearchFieldHide, setIsSearchField] = useState(false);
+  const [value, setValue] = useState<string>("");
+
+  const onClickSearch = () => {
+    router.push(`${pathName}?name=*${value.toLowerCase()}*`);
+  };
 
   return (
     <header
@@ -292,8 +300,10 @@ export const Header: React.FC = () => {
           placeholder={"Search ..."}
           autoFocus
           disabled={!isSearchFieldHide}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
         />
-        <button className={styles.root__search_btn}>
+        <button onClick={onClickSearch} className={styles.root__search_btn}>
           <HiOutlineSearch />
         </button>
       </div>
