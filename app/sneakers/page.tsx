@@ -39,8 +39,9 @@ export default function Sneakers() {
     }
   }, [searchParams]);
 
-  const changeParams = (params: string): void => {
-    router.push(`${pathName}?${searchParams.toString()}&${params}`);
+  const changeParams = (name: string, value: string): void => {
+    // router.push(`${pathName}?${searchParams.toString()}&${params}`);
+    router.push(`${pathName}?${createQueryString(name, value)}`);
   };
 
   const CardSkeletons = [...new Array(4)].map((_, i) => (
@@ -75,7 +76,6 @@ export default function Sneakers() {
       ) : (
         "ERROR"
       )}
-      <button onClick={clearParams}>fff</button>
     </main>
   );
 }

@@ -19,11 +19,11 @@ export type ProductT = {
   productCategory: string;
   productType: string;
   releaseDate: string;
-  sizeRange: SizeOptionT[];
+  sizeRange: number[];
   sizeUnit: string;
   priceCents: number;
   upperMaterial: string;
-  sizeOptions: [];
+  sizeOptions: SizeOptionT[];
   category: string[];
   story: string;
   mainPictureUrl: string;
@@ -32,6 +32,6 @@ export type ProductT = {
 
 export type FiltersT = {
   name: string;
-  path: "brandName" | "color" | "category" | "sizeRange" | "gender";
+  path: "brandName" | "color" | "category" | "sizeRange[]" | "gender";
   value: string[];
 };

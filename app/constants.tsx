@@ -13,13 +13,13 @@ export const sortTypes: SortType[] = [
   { name: "price ↓", sortProperty: "-priceCents" },
 ];
 
-export const filterTypes = [
-  { name: "brandName", value: "" },
-  { name: "color", value: "" },
-  { name: "category", value: "" },
-  { name: "sizeRange", value: "" },
-  { name: "gender", value: "" },
-];
+// export const filterTypes = [
+//   { name: "brandName", value: "" },
+//   { name: "color", value: "" },
+//   { name: "category", value: "" },
+//   { name: "sizeRange[]", value: "" },
+//   { name: "gender", value: "" },
+// ];
 
 // export const filterTypes = [
 //   { name: "Brands", value: ["Nike", "Off-white"] },

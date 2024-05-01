@@ -14,7 +14,7 @@ import { Status } from "@/lib/mainTypes";
 import styles from "./Filters.module.scss";
 
 type FiltersPropsT = {
-  changeParams: (params: string) => void;
+  changeParams: (name: string, value: string) => void;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -33,9 +33,10 @@ export const Filters: React.FC<FiltersPropsT> = ({
     newCategory[i].value = [value];
 
     dispatch(setActiveCategory(newCategory));
-    changeParams(
-      activeCategory.map((cat) => `${cat.path}=${cat.value}`).join("&")
-    );
+    // changeParams(
+    //   activeCategory.map((cat) => `${cat.path}=${cat.value}`).join("&")
+    // );
+    changeParams(newCategory[i].path, newCategory[i].value[0]);
   };
 
   return (
@@ -82,6 +83,7 @@ export const Filters: React.FC<FiltersPropsT> = ({
             </div>
           ))
         : "LOADING"}
+      <ButtonCustom onClick={() => {}} text={`Clear All`} />
     </section>
   );
 };

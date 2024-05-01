@@ -22,7 +22,7 @@ const initialState: FilterSliceState = {
     },
     {
       name: "Sizes",
-      path: "sizeRange",
+      path: "sizeRange[]",
       value: [],
     },
     {

@@ -11,7 +11,7 @@ import { filterSelector } from "@/lib/features/filter/selectors";
 import { setActiveSortType } from "@/lib/features/filter/slice";
 
 type FilterSortPropsT = {
-  changeParams: (params: string) => void;
+  changeParams: (name: string, value: string) => void;
   count: number;
 };
 
@@ -72,7 +72,7 @@ export const FilterSort: React.FC<FilterSortPropsT> = ({
                     <button
                       onClick={() => {
                         dispatch(setActiveSortType(type));
-                        changeParams(`sortBy=${type.sortProperty}`);
+                        changeParams(`sortBy`, type.sortProperty);
                       }}
                     >
                       {type.name}
