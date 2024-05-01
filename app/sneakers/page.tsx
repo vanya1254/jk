@@ -22,26 +22,26 @@ export default function Sneakers() {
   const { products, status } = useAppSelector(productsSelector);
 
   useEffect(() => {
+    dispatch(
+      fetchFilters({
+        path: "/filters-all",
+      })
+    );
+
     if (searchParams.toString()) {
-      dispatch(
-        fetchFilters({
-          path: "/filters-all",
-        })
-      );
       dispatch(
         fetchProducts(
           `?page=1&${selectionsFetch.sneakers.cards}&${searchParams.toString()}`
         )
       );
     } else {
-      dispatch(
-        fetchFilters({
-          path: "/filters-all",
-        })
-      );
       dispatch(fetchProducts(`?page=1&${selectionsFetch.sneakers.cards}`));
     }
   }, [searchParams]);
+
+  const changeParams = (params: string): void => {
+    router.push(`${pathName}?${searchParams.toString()}&${params}`);
+  };
 
   const CardSkeletons = [...new Array(4)].map((_, i) => (
     <CardProductSkeleton key={i} />
@@ -64,7 +64,10 @@ export default function Sneakers() {
   return (
     <main className={styles.main}>
       <Hero crumbs={JSON.parse(pathPage)[pathName]} />
-      <FilterSort count={status === Status.FULFILLED ? products.length : 0} />
+      <FilterSort
+        changeParams={changeParams}
+        count={status === Status.FULFILLED ? products.length : 0}
+      />
       {status === Status.FULFILLED ? (
         <Cards products={products} />
       ) : status === Status.PENDING ? (

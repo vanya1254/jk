@@ -14,11 +14,16 @@ import { Status } from "@/lib/mainTypes";
 import styles from "./Filters.module.scss";
 
 type FiltersPropsT = {
+  changeParams: (params: string) => void;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const Filters: React.FC<FiltersPropsT> = ({ isOpen, setIsOpen }) => {
+export const Filters: React.FC<FiltersPropsT> = ({
+  changeParams,
+  isOpen,
+  setIsOpen,
+}) => {
   const dispatch = useAppDispatch();
   const { filters, status } = useAppSelector(filtersSelector);
   const { activeCategory } = useAppSelector(filterSelector);
@@ -28,6 +33,9 @@ export const Filters: React.FC<FiltersPropsT> = ({ isOpen, setIsOpen }) => {
     newCategory[i].value = [value];
 
     dispatch(setActiveCategory(newCategory));
+    changeParams(
+      activeCategory.map((cat) => `${cat.path}=${cat.value}`).join("&")
+    );
   };
 
   return (

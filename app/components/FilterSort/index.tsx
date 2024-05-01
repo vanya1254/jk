@@ -11,10 +11,14 @@ import { filterSelector } from "@/lib/features/filter/selectors";
 import { setActiveSortType } from "@/lib/features/filter/slice";
 
 type FilterSortPropsT = {
+  changeParams: (params: string) => void;
   count: number;
 };
 
-export const FilterSort: React.FC<FilterSortPropsT> = ({ count }) => {
+export const FilterSort: React.FC<FilterSortPropsT> = ({
+  changeParams,
+  count,
+}) => {
   const dispatch = useAppDispatch();
   const idDetails = useId();
   const { activeSortType } = useAppSelector(filterSelector);
@@ -65,7 +69,12 @@ export const FilterSort: React.FC<FilterSortPropsT> = ({ count }) => {
               <ul className={styles.root__details__content}>
                 {sortTypes.map((type, i) => (
                   <li key={i}>
-                    <button onClick={() => dispatch(setActiveSortType(type))}>
+                    <button
+                      onClick={() => {
+                        dispatch(setActiveSortType(type));
+                        changeParams(`sortBy=${type.sortProperty}`);
+                      }}
+                    >
                       {type.name}
                     </button>
                   </li>
@@ -76,7 +85,11 @@ export const FilterSort: React.FC<FilterSortPropsT> = ({ count }) => {
         </div>
         <p className={styles.root_count}>[{count}]</p>
       </div>
-      <Filters isOpen={isOpenFilters} setIsOpen={setIsOpenFilters} />
+      <Filters
+        changeParams={changeParams}
+        isOpen={isOpenFilters}
+        setIsOpen={setIsOpenFilters}
+      />
     </>
   );
 };
