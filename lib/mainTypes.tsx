@@ -29,3 +29,9 @@ export type ProductT = {
   mainPictureUrl: string;
   productTemplateExternalPictures: string[];
 };
+
+export type FiltersT = {
+  name: string;
+  path: "brandName" | "color" | "category" | "sizeRange" | "gender";
+  value: string[];
+};

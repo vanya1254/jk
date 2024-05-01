@@ -1,3 +1,5 @@
+import { FiltersT } from "@/lib/mainTypes";
+
 export type SortType = {
   name: string;
   sortProperty:
@@ -10,7 +12,7 @@ export type SortType = {
 };
 
 export interface FilterSliceState {
-  activeCategory: number;
+  activeCategory: FiltersT[];
   activeSortType: SortType;
   activePage: number;
   searchValue: string;

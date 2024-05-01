@@ -1,9 +1,4 @@
-import { Status } from "@/lib/mainTypes";
-
-export type FiltersT = {
-  name: string;
-  value: string[];
-};
+import { FiltersT, Status } from "@/lib/mainTypes";
 
 export interface FiltersState {
   filters: FiltersT[];

@@ -6,13 +6,18 @@ import { sortTypes } from "@/app/constants";
 import { ButtonCustom, Filters } from "../";
 
 import styles from "./FilterSort.module.scss";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { filterSelector } from "@/lib/features/filter/selectors";
+import { setActiveSortType } from "@/lib/features/filter/slice";
 
 type FilterSortPropsT = {
   count: number;
 };
 
 export const FilterSort: React.FC<FilterSortPropsT> = ({ count }) => {
+  const dispatch = useAppDispatch();
   const idDetails = useId();
+  const { activeSortType } = useAppSelector(filterSelector);
   const [isOpenFilters, setIsOpenFilters] = useState<boolean>(false);
 
   const onMouseOver = (e: React.MouseEvent<HTMLElement>) => {
@@ -48,7 +53,7 @@ export const FilterSort: React.FC<FilterSortPropsT> = ({ count }) => {
             >
               <summary id={idDetails} onClick={(e) => e.preventDefault()}>
                 Sort By:
-                <span>{`Price ↓`}</span>
+                <span>{activeSortType.name}</span>
                 <svg viewBox="0 0 6 4" width="15px" height="10px">
                   <path
                     d="M5.27 0L2.999 2.509.729 0 0 .684 2.999 4l3-3.316z"
@@ -60,7 +65,9 @@ export const FilterSort: React.FC<FilterSortPropsT> = ({ count }) => {
               <ul className={styles.root__details__content}>
                 {sortTypes.map((type, i) => (
                   <li key={i}>
-                    <button>{type}</button>
+                    <button onClick={() => dispatch(setActiveSortType(type))}>
+                      {type.name}
+                    </button>
                   </li>
                 ))}
               </ul>

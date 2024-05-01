@@ -4,8 +4,11 @@ import React from "react";
 
 import { ButtonCustom, SwiperSlider } from "../";
 
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { filtersSelector } from "@/lib/features/filters/selectors";
+import { filterSelector } from "@/lib/features/filter/selectors";
+import { setActiveCategory } from "@/lib/features/filter/slice";
+
 import { Status } from "@/lib/mainTypes";
 
 import styles from "./Filters.module.scss";
@@ -16,7 +19,16 @@ type FiltersPropsT = {
 };
 
 export const Filters: React.FC<FiltersPropsT> = ({ isOpen, setIsOpen }) => {
+  const dispatch = useAppDispatch();
   const { filters, status } = useAppSelector(filtersSelector);
+  const { activeCategory } = useAppSelector(filterSelector);
+
+  const onClickCategory = (i: number, value: string) => {
+    const newCategory = activeCategory.map((category) => ({ ...category }));
+    newCategory[i].value = [value];
+
+    dispatch(setActiveCategory(newCategory));
+  };
 
   return (
     <section
@@ -50,8 +62,12 @@ export const Filters: React.FC<FiltersPropsT> = ({ isOpen, setIsOpen }) => {
                   gap={10}
                   slidesPerView={"auto"}
                 >
-                  {filter.value.map((value, i) => (
-                    <ButtonCustom key={i} onClick={() => null} text={value} />
+                  {filter.value.map((value, j) => (
+                    <ButtonCustom
+                      key={j}
+                      onClick={() => onClickCategory(i, value)}
+                      text={value}
+                    />
                   ))}
                 </SwiperSlider>
               </details>
