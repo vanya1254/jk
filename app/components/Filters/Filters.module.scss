@@ -84,6 +84,13 @@
     }
   }
 
+  &_clearAll {
+    margin-top: 30px;
+    max-width: 400px;
+    width: 100%;
+    align-self: center;
+  }
+
   &__details[open] &__details__content {
     animation: fadeIn 1s linear forwards;
   }

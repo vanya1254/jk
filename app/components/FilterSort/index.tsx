@@ -11,11 +11,13 @@ import { filterSelector } from "@/lib/features/filter/selectors";
 import { setActiveSortType } from "@/lib/features/filter/slice";
 
 type FilterSortPropsT = {
+  clearParams: () => void;
   changeParams: (name: string, value: string) => void;
   count: number;
 };
 
 export const FilterSort: React.FC<FilterSortPropsT> = ({
+  clearParams,
   changeParams,
   count,
 }) => {
@@ -86,6 +88,7 @@ export const FilterSort: React.FC<FilterSortPropsT> = ({
         <p className={styles.root_count}>[{count}]</p>
       </div>
       <Filters
+        clearParams={clearParams}
         changeParams={changeParams}
         isOpen={isOpenFilters}
         setIsOpen={setIsOpenFilters}

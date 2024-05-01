@@ -14,12 +14,14 @@ import { Status } from "@/lib/mainTypes";
 import styles from "./Filters.module.scss";
 
 type FiltersPropsT = {
+  clearParams: () => void;
   changeParams: (name: string, value: string) => void;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const Filters: React.FC<FiltersPropsT> = ({
+  clearParams,
   changeParams,
   isOpen,
   setIsOpen,
@@ -83,7 +85,11 @@ export const Filters: React.FC<FiltersPropsT> = ({
             </div>
           ))
         : "LOADING"}
-      <ButtonCustom onClick={() => {}} text={`Clear All`} />
+      <ButtonCustom
+        className={styles.root_clearAll}
+        onClick={clearParams}
+        text={`Clear All`}
+      />
     </section>
   );
 };

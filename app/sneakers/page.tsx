@@ -66,6 +66,7 @@ export default function Sneakers() {
     <main className={styles.main}>
       <Hero crumbs={JSON.parse(pathPage)[pathName]} />
       <FilterSort
+        clearParams={clearParams}
         changeParams={changeParams}
         count={status === Status.FULFILLED ? products.length : 0}
       />
