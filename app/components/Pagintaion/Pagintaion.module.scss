@@ -1,0 +1,34 @@
+@import "../../styles/variables";
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 30px var(--padding-hotizontal-mobile);
+
+  &_page {
+  }
+
+  &_link {
+    line-height: normal;
+    font-size: 20px;
+    padding: 4px 10px;
+    border-radius: 20%;
+    transition: $linkTransition;
+
+    &:hover {
+      background-color: var(--color-brown) !important;
+    }
+  }
+
+  [data-theme="dark"] &_link {
+    background-color: $filtersBgColorDark;
+  }
+  [data-theme="light"] &_link {
+    background-color: $filtersBgColor;
+  }
+
+  &_active {
+    background-color: var(--color-green) !important;
+  }
+}

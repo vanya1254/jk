@@ -4,15 +4,23 @@ import React, { useCallback, useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Status } from "../../lib/mainTypes";
 
-import { Hero, CardProductSkeleton, FilterSort, Cards } from "../components";
+import {
+  Hero,
+  CardProductSkeleton,
+  FilterSort,
+  Cards,
+  Pagination,
+} from "../components";
 import { pathPage, selectionsFetch } from "../constants";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { productsSelector } from "@/lib/features/products/selectors";
 import { fetchProducts } from "@/lib/features/products/slice";
+import { fetchFilters } from "@/lib/features/filters/slice";
+import { filterSelector } from "../../lib/features/filter/selectors";
+import { setActivePage, reset } from "@/lib/features/filter/slice";
 
 import styles from "../page.module.scss";
-import { fetchFilters } from "@/lib/features/filters/slice";
 
 export default function Sneakers() {
   const pathName = usePathname();
@@ -20,6 +28,7 @@ export default function Sneakers() {
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
   const { products, status } = useAppSelector(productsSelector);
+  const { activePage } = useAppSelector(filterSelector);
 
   useEffect(() => {
     dispatch(
@@ -27,11 +36,13 @@ export default function Sneakers() {
         path: "/filters-all",
       })
     );
+  }, []);
 
+  useEffect(() => {
     if (searchParams.toString()) {
       dispatch(
         fetchProducts(
-          `?page=1&${selectionsFetch.sneakers.cards}&${searchParams.toString()}`
+          `?${selectionsFetch.sneakers.cards}&${searchParams.toString()}`
         )
       );
     } else {
@@ -49,6 +60,7 @@ export default function Sneakers() {
   ));
 
   const clearParams = () => {
+    dispatch(reset());
     router.push(pathName);
   };
 
@@ -81,6 +93,11 @@ export default function Sneakers() {
       ) : (
         "ERROR"
       )}
+      <Pagination
+        changeParams={changeParams}
+        countPages={10}
+        currentPage={Number(searchParams.get("page"))}
+      />
     </main>
   );
 }

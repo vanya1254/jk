@@ -75,7 +75,7 @@ export const sortTypes: SortType[] = [
 export const selectionsFetch = {
   home: {
     cards:
-      "_select=slug,mainPictureUrl,name,productTemplateExternalPictures,priceCents,id",
+      "_select=slug,mainPictureUrl,name,productTemplateExternalPictures,priceCents,id,brandName",
   },
   sneakers: {
     cards:

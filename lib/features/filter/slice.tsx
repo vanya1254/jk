@@ -43,6 +43,9 @@ export const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
+    reset() {
+      return initialState;
+    },
     setActiveCategory(state, action: PayloadAction<FiltersT[]>) {
       state.activeCategory = action.payload;
     },
@@ -65,6 +68,7 @@ export const filterSlice = createSlice({
 });
 
 export const {
+  reset,
   setActiveCategory,
   setActiveSortType,
   setActivePage,

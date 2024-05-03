@@ -50,15 +50,15 @@ export default function Home() {
             : CardProducts}
         </SwiperSlider>
       </SeeAllLayout>
-      <SeeAllLayout
-        title="New Arrivals"
-        pathName={`/sneakers?brand={products[7].brandName}`}
-      >
-        {status === Status.PENDING ? (
-          "CardSkeletons"
-        ) : status === Status.REJECTED ? (
-          "ERROR"
-        ) : (
+      {status === Status.PENDING ? (
+        "CardSkeleton"
+      ) : status === Status.REJECTED ? (
+        "ERROR"
+      ) : (
+        <SeeAllLayout
+          title="New Arrivals"
+          pathName={`/sneakers?brandName=${products[7].brandName}`}
+        >
           <BestChoiceCard
             marginTop="30px"
             title={products[7].name}
@@ -66,8 +66,8 @@ export default function Home() {
             price={products[7].priceCents}
             img={products[7].mainPictureUrl}
           />
-        )}
-      </SeeAllLayout>
+        </SeeAllLayout>
+      )}
     </main>
   );
 }

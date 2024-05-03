@@ -6,6 +6,7 @@ export { SwiperSlider } from "./SwiperSlider";
 export { CardProduct } from "./CardProduct";
 export { FilterSort } from "./FilterSort";
 export { Filters } from "./Filters";
+export { Pagination } from "./Pagintaion";
 
 //server
 
