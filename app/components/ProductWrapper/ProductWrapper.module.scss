@@ -1,2 +1,69 @@
+@import "../../styles/variables";
+
 .root {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  padding: 0px var(--padding-hotizontal-mobile);
+  gap: 30px;
+
+  &__imgs {
+    width: 100%;
+    border: 1px solid $deactiveColor;
+
+    @media (min-width: 1023px) {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
+
+  &__img {
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid $deactiveColor;
+
+    img {
+      width: 100%;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  &_counter {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: var(--color-dark);
+  }
+
+  &__description {
+    position: sticky;
+    top: var(--height-header);
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    &_price {
+      font-weight: 400;
+      font-size: 24px;
+    }
+
+    &__info {
+      p {
+        max-height: 40px;
+        overflow: hidden;
+      }
+    }
+  }
+
+  &_subtitle {
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 1023px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+  }
 }
