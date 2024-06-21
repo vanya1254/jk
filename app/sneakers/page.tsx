@@ -17,8 +17,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { productsSelector } from "@/lib/features/products/selectors";
 import { fetchProducts } from "@/lib/features/products/slice";
 import { fetchFilters } from "@/lib/features/filters/slice";
-import { filterSelector } from "../../lib/features/filter/selectors";
-import { setActivePage, reset } from "@/lib/features/filter/slice";
+import { reset } from "@/lib/features/filter/slice";
 
 import styles from "../page.module.scss";
 
@@ -28,7 +27,6 @@ export default function Sneakers() {
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
   const { products, status } = useAppSelector(productsSelector);
-  const { activePage } = useAppSelector(filterSelector);
 
   useEffect(() => {
     dispatch(
@@ -46,12 +44,15 @@ export default function Sneakers() {
         )
       );
     } else {
-      dispatch(fetchProducts(`?page=1&${selectionsFetch.sneakers.cards}`));
+      dispatch(
+        fetchProducts(
+          `?page=1&${selectionsFetch.sneakers.cards}&${searchParams.toString()}`
+        )
+      );
     }
   }, [searchParams]);
 
   const changeParams = (name: string, value: string): void => {
-    // router.push(`${pathName}?${searchParams.toString()}&${params}`);
     router.push(`${pathName}?${createQueryString(name, value)}`);
   };
 

@@ -12,7 +12,7 @@ export type ProductT = {
   slug: string;
   brandName: string;
   designer: string;
-  gender: string[];
+  gender: string;
   name: string;
   nickname: string;
   color: string;
@@ -24,7 +24,7 @@ export type ProductT = {
   priceCents: number;
   upperMaterial: string;
   sizeOptions: SizeOptionT[];
-  category: string[];
+  category: string;
   story: string;
   mainPictureUrl: string;
   productTemplateExternalPictures: string[];

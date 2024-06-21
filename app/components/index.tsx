@@ -7,6 +7,7 @@ export { CardProduct } from "./CardProduct";
 export { FilterSort } from "./FilterSort";
 export { Filters } from "./Filters";
 export { Pagination } from "./Pagintaion";
+export { ProductWrapper } from "./ProductWrapper";
 
 //server
 
