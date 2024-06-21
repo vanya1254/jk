@@ -41,42 +41,50 @@ export const ProductWrapper: React.FC = () => {
           slidesPerView={1}
         />
       )}
-      <div className={styles.root__wrapper}>
-        <div className={styles.root__description}>
-          <h2 className={styles.root__description_name}>{product.name}</h2>
-          <p className={styles.root__description_price}>{`$${(
-            product.priceCents / 100
-          ).toFixed(2)}`}</p>
-          <div className={styles.root__description__info}>
-            <p>{product.story}</p>
-            <div className={styles.root__description_more}>
-              {isRead ? "" : <span>...</span>}
-              <button
-                className={styles.root__description_btn}
-                onClick={onClickMore}
-              >
-                {isRead ? "Read less" : "Read more"}
-              </button>
-            </div>
+      {/* <div className={styles.root__wrapper}> */}
+      <div className={styles.root__description}>
+        <h2 className={styles.root__description_name}>{product.name}</h2>
+        <p className={styles.root__description_price}>{`$${(
+          product.priceCents / 100
+        ).toFixed(2)}`}</p>
+        <div className={styles.root__description__info}>
+          <p style={{ maxHeight: `${isRead ? "100%" : ""}` }}>
+            {product.story}
+          </p>
+          <div className={styles.root__description_more}>
+            {isRead ? "" : <span>...</span>}
+            <button
+              className={styles.root__description_btn}
+              onClick={onClickMore}
+            >
+              {isRead ? "Read less" : "Read more"}
+            </button>
           </div>
-          <div className={styles.root__color}>
-            <span className={styles.root_subtitle}>Color:</span>
-            <div className={styles.root__color_view}></div>
-          </div>
-          <div className={styles.root__sizesInfo}>
-            <span className={styles.root_subtitle}>Sizes (us):</span>
-            <div className={styles.root__sizesInfo__sizes}>
-              {product.sizeRange.map((size, i) => (
-                <ButtonCustom
-                  onClick={undefined}
-                  text={size.toString()}
-                ></ButtonCustom>
-              ))}
-            </div>
-          </div>
-          <button className={styles.root_btn}>Add to bag</button>
         </div>
+        <div className={styles.root__color}>
+          <span className={styles.root_subtitle}>Color:</span>
+          <div
+            style={{ backgroundColor: product.color }}
+            className={styles.root__color_view}
+          >
+            <span>{product.color}</span>
+          </div>
+        </div>
+        <div className={styles.root__sizesInfo}>
+          <span className={styles.root_subtitle}>Sizes (us):</span>
+          <div className={styles.root__sizesInfo__sizes}>
+            {product.sizeRange.map((size, i) => (
+              <ButtonCustom
+                onClick={undefined}
+                text={size.toString()}
+                className={styles.root__sizesInfo_size}
+              ></ButtonCustom>
+            ))}
+          </div>
+        </div>
+        <button className={styles.root_btn}>Add to bag</button>
       </div>
+      {/* </div> */}
     </section>
   );
 };

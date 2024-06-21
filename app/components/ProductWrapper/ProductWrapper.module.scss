@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr auto;
-  padding: 0px var(--padding-hotizontal-mobile);
+  padding: var(--padding-hotizontal-mobile);
   gap: 30px;
 
   &__imgs {
@@ -56,10 +56,81 @@
         overflow: hidden;
       }
     }
+
+    &_btn {
+      text-decoration: underline;
+    }
   }
 
   &_subtitle {
+    display: block;
     text-transform: uppercase;
+    padding-bottom: 8px;
+  }
+
+  &__color {
+    &_view {
+      position: relative;
+      width: 2rem;
+      height: 2rem;
+
+      border: 1px solid;
+      border-radius: 6px;
+
+      span {
+        position: absolute;
+        top: calc(100% - 1.5rem);
+        left: calc(2rem + 6px);
+        visibility: hidden;
+
+        transition: 0.2s ease-in-out;
+      }
+
+      &:hover span {
+        visibility: visible;
+      }
+    }
+
+    [data-theme="dark"] &_view {
+      box-shadow: inset 0 0 0 2px var(--color-dark);
+    }
+    [data-theme="light"] &_view {
+      box-shadow: inset 0 0 0 2px var(--color-light);
+    }
+  }
+
+  &_btn {
+    line-height: normal;
+    text-transform: uppercase;
+    transition: $linkTransition;
+    padding: 6px 4px;
+    border-radius: $borderRadiusBtn;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  [data-theme="dark"] &_btn {
+    background-color: $heroBgColorLight;
+    color: var(--color-dark);
+  }
+
+  [data-theme="light"] &_btn {
+    background-color: $heroBgColorDark;
+    color: var(--color-light);
+  }
+
+  &__sizesInfo {
+    &__sizes {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 6px;
+
+      @media (min-width: 1023px) {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
   }
 
   @media (min-width: 1023px) {
