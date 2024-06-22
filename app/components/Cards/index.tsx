@@ -1,7 +1,7 @@
 import React from "react";
 
-import { CardProduct } from "../CardProduct";
 import { ProductT } from "@/lib/mainTypes";
+import { CardProduct } from "../";
 
 import styles from "./Cards.module.scss";
 

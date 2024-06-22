@@ -4,8 +4,8 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard } from "swiper/modules";
 
-import styles from "./SwiperSlider.module.scss";
 import "swiper/css";
+import styles from "./SwiperSlider.module.scss";
 
 type SwiperSliderPropsT = {
   className?: string | undefined;

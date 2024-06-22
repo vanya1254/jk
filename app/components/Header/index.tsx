@@ -2,14 +2,16 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+
 import { TbListSearch } from "react-icons/tb";
 import { HiOutlineSearch } from "react-icons/hi";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import useScrollDirection from "@/app/hooks/useScrollDirection";
 
+import { ThemeSwitcher } from "../";
+
 import styles from "./Header.module.scss";
-import { ThemeSwitcher } from "../ThemeSwitcher";
-import { usePathname, useRouter } from "next/navigation";
 
 export const Header: React.FC = () => {
   const pathName = usePathname();

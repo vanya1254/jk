@@ -38,9 +38,6 @@
   }
 
   &__description {
-    position: sticky;
-    top: var(--height-header);
-
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -59,6 +56,12 @@
 
     &_btn {
       text-decoration: underline;
+    }
+
+    @media (min-width: 1023px) {
+      position: sticky;
+      top: var(--height-header);
+      align-self: start;
     }
   }
 
@@ -124,12 +127,11 @@
   &__sizesInfo {
     &__sizes {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100% / 3, max(64px, 100% / 7)), 1fr)
+      );
       gap: 6px;
-
-      @media (min-width: 1023px) {
-        grid-template-columns: repeat(6, 1fr);
-      }
     }
   }
 

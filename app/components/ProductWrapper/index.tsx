@@ -6,10 +6,9 @@ import useWindowSize from "@/app/hooks/useWindowSize";
 import { useAppSelector } from "@/lib/hooks";
 import { productSelector } from "@/lib/features/product/selectors";
 
-import { ButtonCustom } from "../ButtonCustom";
+import { SwiperSlider, ButtonCustom } from "../";
 
 import styles from "./ProductWrapper.module.scss";
-import { SwiperSlider } from "../";
 
 export const ProductWrapper: React.FC = () => {
   const size = useWindowSize();
@@ -31,7 +30,7 @@ export const ProductWrapper: React.FC = () => {
 
   return (
     <section className={styles.root}>
-      {size.width >= 1024 ? (
+      {size.width >= 1023 ? (
         <div className={styles.root__imgs}>{imgs}</div>
       ) : (
         <SwiperSlider
@@ -41,7 +40,6 @@ export const ProductWrapper: React.FC = () => {
           slidesPerView={1}
         />
       )}
-      {/* <div className={styles.root__wrapper}> */}
       <div className={styles.root__description}>
         <h2 className={styles.root__description_name}>{product.name}</h2>
         <p className={styles.root__description_price}>{`$${(
@@ -75,6 +73,7 @@ export const ProductWrapper: React.FC = () => {
           <div className={styles.root__sizesInfo__sizes}>
             {product.sizeRange.map((size, i) => (
               <ButtonCustom
+                key={i}
                 onClick={undefined}
                 text={size.toString()}
                 className={styles.root__sizesInfo_size}
@@ -84,7 +83,6 @@ export const ProductWrapper: React.FC = () => {
         </div>
         <button className={styles.root_btn}>Add to bag</button>
       </div>
-      {/* </div> */}
     </section>
   );
 };

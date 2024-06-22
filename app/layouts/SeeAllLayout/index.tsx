@@ -1,7 +1,7 @@
 import React from "react";
+import Link from "next/link";
 
 import styles from "./SeeAllLayout.module.scss";
-import Link from "next/link";
 
 type SeaAllLayoutPropsT = {
   children: React.ReactNode;

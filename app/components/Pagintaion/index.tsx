@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import styles from "./Pagintaion.module.scss";
-import { useRouter, useSearchParams } from "next/navigation";
 
 type PaginationPropsT = {
   changeParams: (name: string, value: string) => void;

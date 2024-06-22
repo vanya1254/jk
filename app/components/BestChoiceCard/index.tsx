@@ -1,7 +1,8 @@
 import React from "react";
 
-import styles from "./BestChoiceCard.module.scss";
 import Link from "next/link";
+
+import styles from "./BestChoiceCard.module.scss";
 
 type BestChoiceCardPropsT = {
   marginTop: string;

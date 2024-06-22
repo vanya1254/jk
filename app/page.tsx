@@ -18,8 +18,9 @@ import {
 } from "./components";
 import { SeeAllLayout } from "./layouts";
 
-import styles from "./page.module.scss";
 import { pathPage, selectionsFetch } from "./constants";
+
+import styles from "./page.module.scss";
 
 export default function Home() {
   const pathName = usePathname();

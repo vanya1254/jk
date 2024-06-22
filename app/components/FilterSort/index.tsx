@@ -5,10 +5,11 @@ import React, { useId, useState } from "react";
 import { sortTypes } from "@/app/constants";
 import { ButtonCustom, Filters } from "../";
 
-import styles from "./FilterSort.module.scss";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { filterSelector } from "@/lib/features/filter/selectors";
 import { setActiveSortType } from "@/lib/features/filter/slice";
+
+import styles from "./FilterSort.module.scss";
 
 type FilterSortPropsT = {
   clearParams: () => void;
