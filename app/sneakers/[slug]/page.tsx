@@ -8,8 +8,6 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
 import { ProductWrapper } from "@/app/components";
 
-import styles from "../../page.module.scss";
-
 export default function SneakersSlug({ params }: { params: { slug: string } }) {
   const dispatch = useAppDispatch();
   const { product, status } = useAppSelector(productSelector);
@@ -19,7 +17,7 @@ export default function SneakersSlug({ params }: { params: { slug: string } }) {
   }, []);
 
   return (
-    <main className={styles.main}>
+    <main>
       <ProductWrapper />
     </main>
   );

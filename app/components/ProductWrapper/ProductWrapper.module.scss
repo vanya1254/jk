@@ -1,12 +1,6 @@
 @import "../../styles/variables";
 
 .root {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
-  padding: var(--padding-hotizontal-mobile);
-  gap: 30px;
-
   &__imgs {
     width: 100%;
     border: 1px solid $deactiveColor;
@@ -133,10 +127,5 @@
       );
       gap: 6px;
     }
-  }
-
-  @media (min-width: 1023px) {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
   }
 }

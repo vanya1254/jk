@@ -6,6 +6,7 @@ import useWindowSize from "@/app/hooks/useWindowSize";
 import { useAppSelector } from "@/lib/hooks";
 import { productSelector } from "@/lib/features/product/selectors";
 
+import { GridLayout } from "@/app/layouts";
 import { SwiperSlider, ButtonCustom } from "../";
 
 import styles from "./ProductWrapper.module.scss";
@@ -29,7 +30,7 @@ export const ProductWrapper: React.FC = () => {
   ));
 
   return (
-    <section className={styles.root}>
+    <GridLayout className={styles.root}>
       {size.width >= 1023 ? (
         <div className={styles.root__imgs}>{imgs}</div>
       ) : (
@@ -83,6 +84,6 @@ export const ProductWrapper: React.FC = () => {
         </div>
         <button className={styles.root_btn}>Add to bag</button>
       </div>
-    </section>
+    </GridLayout>
   );
 };

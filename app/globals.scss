@@ -76,6 +76,13 @@ main {
   display: block;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -127,4 +134,20 @@ ul li {
 
 [data-theme="light"] .logo path {
   fill: var(--color-dark);
+}
+
+.fw-normal {
+  font-weight: 500;
+}
+
+.p-base {
+  padding: var(--padding-hotizontal-mobile);
+}
+
+.items-start {
+  align-items: start;
+}
+
+.gap-base {
+  gap: 30px;
 }

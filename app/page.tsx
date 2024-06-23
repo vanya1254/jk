@@ -20,8 +20,6 @@ import { SeeAllLayout } from "./layouts";
 
 import { pathPage, selectionsFetch } from "./constants";
 
-import styles from "./page.module.scss";
-
 export default function Home() {
   const pathName = usePathname();
   const dispatch = useAppDispatch();
@@ -40,7 +38,7 @@ export default function Home() {
   ));
 
   return (
-    <main className={styles.main}>
+    <main>
       <Hero crumbs={JSON.parse(pathPage)[pathName]} />
       <SeeAllLayout title="Popular Shoes" pathName="/sneakers">
         <SwiperSlider gap={20} slidesPerView={"auto"}>

@@ -19,8 +19,6 @@ import { fetchProducts } from "@/lib/features/products/slice";
 import { fetchFilters } from "@/lib/features/filters/slice";
 import { reset } from "@/lib/features/filter/slice";
 
-import styles from "../page.module.scss";
-
 export default function Sneakers() {
   const pathName = usePathname();
   const router = useRouter();
@@ -80,7 +78,7 @@ export default function Sneakers() {
   );
 
   return (
-    <main className={styles.main}>
+    <main>
       <Hero crumbs={JSON.parse(pathPage)[pathName]} />
       <FilterSort
         clearParams={clearParams}

@@ -280,7 +280,7 @@ export const Header: React.FC = () => {
           </svg>
         </Link>
         <div className={styles.root__btns}>
-          {pathName.includes("/sneakers") ? (
+          {pathName === "/sneakers" ? (
             <button
               onClick={() => setIsSearchField((prev) => !prev)}
               className={styles.root__btns_search}
@@ -290,9 +290,9 @@ export const Header: React.FC = () => {
           ) : (
             ""
           )}
-          <button className={styles.root__btns_cart}>
+          <Link href={"/bag"} className={styles.root__btns_cart}>
             <RiShoppingCart2Line />
-          </button>
+          </Link>
         </div>
       </nav>
       <div

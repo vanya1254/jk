@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+
+.root {
+  border: 1px solid $deactiveColor;
+
+  @media (min-width: 1023px) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+}

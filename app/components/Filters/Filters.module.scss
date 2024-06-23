@@ -114,4 +114,13 @@
     border-radius: $borderRadiusCard;
     border: 3px solid var(--color-scrollbar-track);
   }
+
+  @media (min-width: 1023px) {
+    width: 500px;
+    top: 83px;
+    right: 20px;
+    left: auto;
+    bottom: auto;
+    border-radius: 8px;
+  }
 }
