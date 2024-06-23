@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &_title {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &__p {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      font-weight: 600;
+      font-size: large;
+    }
+  }
+}

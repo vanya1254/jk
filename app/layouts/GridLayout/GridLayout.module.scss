@@ -4,6 +4,7 @@
   grid-template-rows: 1fr auto;
   padding: var(--padding-hotizontal-mobile);
   gap: 30px;
+  width: 100%;
 
   @media (min-width: 1023px) {
     grid-template-columns: repeat(3, 1fr);

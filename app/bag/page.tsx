@@ -1,15 +1,21 @@
 "use client";
 
-import { GridLayout } from "../layouts";
+import { GridLayout, CartLayout } from "../layouts";
+import { CartSummary } from "../components";
 
 export default function Bag() {
   return (
-    <main className="p-base items-start gap-base">
-      <h2 className="fw-normal">
-        Your Shopping Bag ({2}
-        {2 > 1 ? " items" : " item"})
-      </h2>
-      <GridLayout></GridLayout>
+    <main>
+      <GridLayout>
+        <h2 className="fw-normal grid-3-col">
+          Your Shopping Bag ({2}
+          {2 > 1 ? " items" : " item"})
+        </h2>
+        <CartLayout>
+          <div></div>
+        </CartLayout>
+        <CartSummary />
+      </GridLayout>
     </main>
   );
 }

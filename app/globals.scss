@@ -140,14 +140,9 @@ ul li {
   font-weight: 500;
 }
 
-.p-base {
-  padding: var(--padding-hotizontal-mobile);
-}
-
-.items-start {
-  align-items: start;
-}
-
-.gap-base {
-  gap: 30px;
+.grid-3-col {
+  @media (min-width: 1023px) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
 }

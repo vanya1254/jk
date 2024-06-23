@@ -1,6 +1,7 @@
 @import "../../styles/variables";
 
 .root {
+  min-height: 200px;
   border: 1px solid $deactiveColor;
 
   @media (min-width: 1023px) {

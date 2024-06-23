@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./Cart.module.scss";
+import styles from "./CartLayout.module.scss";
 
 type CartLayoutPropsT = {
   children: React.ReactNode;
