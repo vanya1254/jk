@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { FetchFiltersParams, FiltersState, FiltersT } from "./types";
-import { Status } from "@/lib/mainTypes";
+import { FetchFiltersParams, FiltersState } from "./types";
+import { FiltersT, Status } from "@/lib/mainTypes";
 
 export const fetchFilters = createAsyncThunk<FiltersT[], FetchFiltersParams>(
   "filters/fetchFilters",

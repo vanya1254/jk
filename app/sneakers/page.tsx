@@ -35,19 +35,13 @@ export default function Sneakers() {
   }, []);
 
   useEffect(() => {
-    if (searchParams.toString()) {
-      dispatch(
-        fetchProducts(
-          `?${selectionsFetch.sneakers.cards}&${searchParams.toString()}`
-        )
-      );
-    } else {
-      dispatch(
-        fetchProducts(
-          `?page=1&${selectionsFetch.sneakers.cards}&${searchParams.toString()}`
-        )
-      );
-    }
+    dispatch(
+      fetchProducts(
+        `?page=${searchParams.get("page") || 1}&${
+          selectionsFetch.sneakers.cards
+        }${searchParams.toString().replace(new RegExp(/page=[\d\d]/), "")}`
+      )
+    );
   }, [searchParams]);
 
   const changeParams = (name: string, value: string): void => {

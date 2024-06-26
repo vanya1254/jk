@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { ProductsState } from "./types";
+import { MetaT, ProductsState } from "./types";
 import { ProductT, Status } from "@/lib/mainTypes";
 
 export const fetchProducts = createAsyncThunk(
@@ -10,14 +10,20 @@ export const fetchProducts = createAsyncThunk(
       `https://94bd9fe6fad33179.mokky.dev/sneakers${params}`
     );
 
-    const data = await response.json();
-    const { items } = await data;
+    const data: { meta: MetaT; items: ProductT[] } = await response.json();
 
-    return items;
+    return data;
   }
 );
 
 const initialState: ProductsState = {
+  meta: {
+    total_items: 0,
+    total_pages: 0,
+    current_page: 0,
+    per_page: 0,
+    remaining_count: 0,
+  },
   products: [],
   status: Status.PENDING,
 };
@@ -33,8 +39,9 @@ export const productsSlice = createSlice({
       })
       .addCase(
         fetchProducts.fulfilled,
-        (state, action: PayloadAction<ProductT[]>) => {
-          state.products = action.payload;
+        (state, action: PayloadAction<{ meta: MetaT; items: ProductT[] }>) => {
+          state.meta = action.payload.meta;
+          state.products = action.payload.items;
           state.status = Status.FULFILLED;
         }
       )
