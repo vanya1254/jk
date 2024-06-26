@@ -6,7 +6,7 @@ export enum Status {
 
 export type SizeOptionT = { presentation: string; value: number };
 
-export type ProductT = {
+export interface ProductT {
   id: number;
   sku: string;
   slug: string;
@@ -28,7 +28,7 @@ export type ProductT = {
   story: string;
   mainPictureUrl: string;
   productTemplateExternalPictures: string[];
-};
+}
 
 export type FiltersT = {
   name: string;

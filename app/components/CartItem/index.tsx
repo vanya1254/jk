@@ -1,44 +1,47 @@
+"use client";
+
 import React from "react";
+import Link from "next/link";
 import { HiOutlineHeart, HiHeart } from "react-icons/hi2";
 import { PiTrash } from "react-icons/pi";
 
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { patchBag, removeItem } from "@/lib/features/bag/slice";
+
+import { CartProductT } from "@/lib/features/bag/types";
+
 import styles from "./CartItem.module.scss";
 
-type CartItemPropsT = {
-  img: string;
-  id: number;
-  name: string;
-  color: string;
-  size: number;
-  quantity: number;
-  priceCents: number;
-  wished: boolean;
-};
+export const CartItem: React.FC<CartProductT> = ({ ...item }) => {
+  const dispatch = useAppDispatch();
 
-export const CartItem: React.FC<CartItemPropsT> = ({
-  img,
-  id,
-  name,
-  color,
-  size,
-  quantity,
-  priceCents,
-  wished,
-}) => {
+  const onClickRemove = () => {
+    dispatch(removeItem(item));
+    dispatch(patchBag());
+  };
+
   return (
     <div className={styles.root}>
-      <div className={styles.root__img}>
-        <img src={img} alt={`img ${name}`} />
-        <span className={styles.root__img_heart}>
-          {wished ? <HiOutlineHeart /> : <HiHeart />}
+      <Link href={`/sneakers/${item.slug}`}>
+        <div className={styles.root__img}>
+          <img src={item.mainPictureUrl} alt={`img ${item.name}`} />
+          <span className={styles.root__img_heart}>
+            {item.isWished ? <HiHeart /> : <HiOutlineHeart />}
+          </span>
+        </div>
+      </Link>
+      <div className={styles.root__desc}>
+        <h3 className={styles.root_title}>{item.name}</h3>
+        <div className={styles.root__desc__info}>
+          <p>Color: {item.color}</p>
+          <p>Size: {item.size}</p>
+          <p>Quantity: {item.quantity}</p>
+        </div>
+        <span className={styles.root_price}>
+          {`$${(item.priceCents / 100).toFixed(2)}`}
         </span>
       </div>
-      <div className={styles.root__desc}>
-        <h3>{name}</h3>
-        <div className={styles.root__desc__info}></div>
-        <span className={styles.root_price}></span>
-      </div>
-      <button className={styles.root_remove}>
+      <button onClick={onClickRemove} className={styles.root_remove}>
         <PiTrash />
       </button>
     </div>

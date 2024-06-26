@@ -3,21 +3,33 @@
 import React, { useState } from "react";
 
 import useWindowSize from "@/app/hooks/useWindowSize";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { productSelector } from "@/lib/features/product/selectors";
+import { postItem } from "@/lib/features/bag/slice";
 
 import { GridLayout } from "@/app/layouts";
 import { SwiperSlider, ButtonCustom } from "../";
 
 import styles from "./ProductWrapper.module.scss";
+import { CartProductT } from "@/lib/features/bag/types";
 
 export const ProductWrapper: React.FC = () => {
+  const dispatch = useAppDispatch();
   const size = useWindowSize();
-  const [isRead, setIsRead] = useState(false);
   const { product } = useAppSelector(productSelector);
+  const [isRead, setIsRead] = useState(false);
+  const [curSize, setCurSize] = useState(0);
 
   const onClickMore = () => {
     setIsRead((prev) => !prev);
+  };
+
+  const onClickBag = () => {
+    if (curSize) {
+      const item = { ...product, size: curSize, quantity: 1 } as CartProductT;
+
+      dispatch(postItem({ item }));
+    }
   };
 
   const imgs = product.productTemplateExternalPictures.map((img, i) => (
@@ -75,14 +87,18 @@ export const ProductWrapper: React.FC = () => {
             {product.sizeRange.map((size, i) => (
               <ButtonCustom
                 key={i}
-                onClick={undefined}
+                onClick={() => setCurSize(size)}
                 text={size.toString()}
-                className={styles.root__sizesInfo_size}
+                className={`${styles.root__sizesInfo_size} ${
+                  curSize === size ? " active" : ""
+                }`}
               ></ButtonCustom>
             ))}
           </div>
         </div>
-        <button className={styles.root_btn}>Add to bag</button>
+        <button onClick={onClickBag} className={styles.root_btn}>
+          Add to bag
+        </button>
       </div>
     </GridLayout>
   );

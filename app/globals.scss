@@ -146,3 +146,7 @@ ul li {
     grid-column-end: 3;
   }
 }
+
+.active {
+  background-color: var(--color-green) !important;
+}

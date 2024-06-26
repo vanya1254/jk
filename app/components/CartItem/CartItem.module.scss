@@ -1,2 +1,69 @@
 .root {
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid;
+
+  &__img {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    height: 240px;
+    width: 180px;
+    border-right: 1px solid;
+
+    img {
+    }
+
+    &_heart {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+
+      cursor: pointer;
+
+      svg {
+        width: 22px;
+      }
+    }
+  }
+
+  &__desc {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+    width: 100%;
+
+    &__info {
+    }
+  }
+
+  &_title {
+    width: 65%;
+    max-height: 72px;
+    overflow: hidden;
+    font-weight: 400;
+  }
+
+  &_price {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+
+  &_remove {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+
+    svg {
+      width: 20px;
+    }
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
