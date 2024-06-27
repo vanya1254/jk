@@ -39,7 +39,7 @@ export default function Sneakers() {
       fetchProducts(
         `?page=${searchParams.get("page") || 1}&${
           selectionsFetch.sneakers.cards
-        }${searchParams.toString().replace(new RegExp(/page=[\d\d]/), "")}`
+        }&${searchParams.toString().replace(new RegExp(/page=[0-9]{0,2}/), "")}`
       )
     );
   }, [searchParams]);
@@ -88,7 +88,7 @@ export default function Sneakers() {
       )}
       <Pagination
         changeParams={changeParams}
-        countPages={10}
+        // countPages={10}
         currentPage={Number(searchParams.get("page"))}
       />
     </main>

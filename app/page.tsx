@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
@@ -19,14 +19,17 @@ import {
 import { SeeAllLayout } from "./layouts";
 
 import { pathPage, selectionsFetch } from "./constants";
+import { getRandomMinMax } from "./utils/getRandomMinMax";
 
 export default function Home() {
   const pathName = usePathname();
   const dispatch = useAppDispatch();
   const { products, status } = useAppSelector(productsSelector);
+  const [bestProduct, setBestProduct] = useState(0);
 
   useEffect(() => {
     dispatch(fetchProducts(`?limit=10&${selectionsFetch.home.cards}`));
+    setBestProduct(getRandomMinMax(0, products.length - 1));
   }, []);
 
   const CardSkeletons = [...new Array(4)].map((_, i) => (
@@ -56,14 +59,14 @@ export default function Home() {
       ) : (
         <SeeAllLayout
           title="New Arrivals"
-          pathName={`/sneakers?brandName=${products[7].brandName}`}
+          pathName={`/sneakers?brandName=${products[bestProduct].brandName}`}
         >
           <BestChoiceCard
             marginTop="30px"
-            title={products[7].name}
-            slug={products[7].slug}
-            price={products[7].priceCents}
-            img={products[7].mainPictureUrl}
+            title={products[bestProduct].name}
+            slug={products[bestProduct].slug}
+            price={products[bestProduct].priceCents}
+            img={products[bestProduct].mainPictureUrl}
           />
         </SeeAllLayout>
       )}

@@ -26,7 +26,7 @@ export const CartItem: React.FC<CartProductT> = ({ ...item }) => {
         <div className={styles.root__img}>
           <img src={item.mainPictureUrl} alt={`img ${item.name}`} />
           <span className={styles.root__img_heart}>
-            {item.isWished ? <HiHeart /> : <HiOutlineHeart />}
+            {/* {item.isWished ? <HiHeart /> : <HiOutlineHeart />} */}
           </span>
         </div>
       </Link>

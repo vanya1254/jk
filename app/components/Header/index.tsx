@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -23,6 +23,12 @@ export const Header: React.FC = () => {
   const onClickSearch = () => {
     router.push(`${pathName}?name=*${value.toLowerCase()}*`);
   };
+
+  useEffect(() => {
+    if (pathName !== "/sneakers") {
+      setIsSearchField(false);
+    }
+  }, [pathName]);
 
   return (
     <header
