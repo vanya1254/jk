@@ -7,13 +7,12 @@ type GridLayoutPropsT = {
   className?: string;
 };
 
-export const GridLayout: React.FC<GridLayoutPropsT> = ({
-  children,
-  className,
-}) => {
+const GridLayout: React.FC<GridLayoutPropsT> = ({ children, className }) => {
   return (
     <section className={`${styles.root}${className ? ` ${className}` : ""}`}>
       {children}
     </section>
   );
 };
+
+export default GridLayout;

@@ -9,7 +9,7 @@ type SeaAllLayoutPropsT = {
   pathName: string;
 };
 
-export const SeeAllLayout: React.FC<SeaAllLayoutPropsT> = ({
+const SeeAllLayout: React.FC<SeaAllLayoutPropsT> = ({
   children,
   title,
   pathName,
@@ -26,3 +26,5 @@ export const SeeAllLayout: React.FC<SeaAllLayoutPropsT> = ({
     </div>
   );
 };
+
+export default SeeAllLayout;

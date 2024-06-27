@@ -15,7 +15,7 @@ type SwiperSliderPropsT = {
   slidesPerView: number | "auto" | undefined;
 };
 
-export const SwiperSlider: React.FC<SwiperSliderPropsT> = ({
+const SwiperSlider: React.FC<SwiperSliderPropsT> = ({
   classNameChild,
   className,
   children,
@@ -42,3 +42,5 @@ export const SwiperSlider: React.FC<SwiperSliderPropsT> = ({
     </Swiper>
   );
 };
+
+export default SwiperSlider;

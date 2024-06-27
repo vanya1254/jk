@@ -5,12 +5,13 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Status } from "../../lib/mainTypes";
 
 import {
-  Hero,
   CardProductSkeleton,
   FilterSort,
   Cards,
   Pagination,
 } from "../components";
+import Hero from "@/app/components/Hero";
+
 import { pathPage, selectionsFetch } from "../constants";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
@@ -32,7 +33,7 @@ export default function Sneakers() {
         path: "/filters-all",
       })
     );
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(
@@ -42,7 +43,7 @@ export default function Sneakers() {
         }&${searchParams.toString().replace(new RegExp(/page=[0-9]{0,2}/), "")}`
       )
     );
-  }, [searchParams]);
+  }, [dispatch, searchParams]);
 
   const changeParams = (name: string, value: string): void => {
     router.push(`${pathName}?${createQueryString(name, value)}`);

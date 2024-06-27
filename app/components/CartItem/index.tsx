@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { HiOutlineHeart, HiHeart } from "react-icons/hi2";
 import { PiTrash } from "react-icons/pi";
 
@@ -24,7 +25,13 @@ export const CartItem: React.FC<CartProductT> = ({ ...item }) => {
     <div className={styles.root}>
       <Link href={`/sneakers/${item.slug}`}>
         <div className={styles.root__img}>
-          <img src={item.mainPictureUrl} alt={`img ${item.name}`} />
+          <Image
+            width={750}
+            height={750}
+            src={item.mainPictureUrl}
+            alt={`img ${item.name}`}
+            quality={100}
+          />
           <span className={styles.root__img_heart}>
             {/* {item.isWished ? <HiHeart /> : <HiOutlineHeart />} */}
           </span>

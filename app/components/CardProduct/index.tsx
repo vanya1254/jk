@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { ProductT } from "@/lib/mainTypes";
 
@@ -25,7 +26,10 @@ export const CardProduct: React.FC<CardProductPropsT> = ({ product }) => {
           className={styles.root__header_link}
           href={`/sneakers/${product.slug}`}
         >
-          <img
+          <Image
+            width={750}
+            height={750}
+            quality={100}
             className={`${styles.root__header_img} ${
               onCardOver ? styles.root__header_imgHover : ""
             }`}
@@ -33,7 +37,10 @@ export const CardProduct: React.FC<CardProductPropsT> = ({ product }) => {
             alt={product.name}
           />
           {product.productTemplateExternalPictures.length >= 2 ? (
-            <img
+            <Image
+              width={750}
+              height={750}
+              quality={100}
               className={`${styles.root__header_img} ${
                 !onCardOver ? styles.root__header_imgHover : ""
               }`}

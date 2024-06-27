@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { ButtonCustom } from "../";
+import ButtonCustom from "@/app/components/ButtonCustom";
 
 import { useAppSelector } from "@/lib/hooks";
 import { bagSelector } from "@/lib/features/bag/selectors";

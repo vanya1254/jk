@@ -7,7 +7,7 @@ type HeroPropsT = {
   crumbs: string[];
 };
 
-export const Hero: React.FC<HeroPropsT> = ({ crumbs }) => {
+const Hero: React.FC<HeroPropsT> = ({ crumbs }) => {
   return (
     <section className={styles.root}>
       <h1 className={styles.root_title}>{crumbs[crumbs.length - 1]}</h1>
@@ -34,3 +34,5 @@ export const Hero: React.FC<HeroPropsT> = ({ crumbs }) => {
     </section>
   );
 };
+
+export default Hero;

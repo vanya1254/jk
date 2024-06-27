@@ -1,17 +1,20 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 
 import useWindowSize from "@/app/hooks/useWindowSize";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { productSelector } from "@/lib/features/product/selectors";
 import { postItem } from "@/lib/features/bag/slice";
 
-import { GridLayout } from "@/app/layouts";
-import { SwiperSlider, ButtonCustom } from "../";
+import GridLayout from "@/app/layouts/GridLayout";
+import ButtonCustom from "@/app/components/ButtonCustom";
+import SwiperSlider from "@/app/components/SwiperSlider";
+
+import { CartProductT } from "@/lib/features/bag/types";
 
 import styles from "./ProductWrapper.module.scss";
-import { CartProductT } from "@/lib/features/bag/types";
 
 export const ProductWrapper: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -34,7 +37,15 @@ export const ProductWrapper: React.FC = () => {
 
   const imgs = product.productTemplateExternalPictures.map((img, i) => (
     <div key={i} className={styles.root__img}>
-      <img src={img} alt={`img ${product.name}`} />
+      {img && (
+        <Image
+          quality={100}
+          width={750}
+          height={500}
+          src={img}
+          alt={`img ${product.name}`}
+        />
+      )}
       <span className={styles.root_counter}>{`[${i + 1}/${
         product.productTemplateExternalPictures.length
       }]`}</span>
@@ -46,12 +57,9 @@ export const ProductWrapper: React.FC = () => {
       {size.width >= 1023 ? (
         <div className={styles.root__imgs}>{imgs}</div>
       ) : (
-        <SwiperSlider
-          className={styles.root__imgs}
-          children={imgs}
-          gap={0}
-          slidesPerView={1}
-        />
+        <SwiperSlider className={styles.root__imgs} gap={0} slidesPerView={1}>
+          {imgs}
+        </SwiperSlider>
       )}
       <div className={styles.root__description}>
         <h2 className={styles.root__description_name}>{product.name}</h2>
@@ -75,7 +83,9 @@ export const ProductWrapper: React.FC = () => {
         <div className={styles.root__color}>
           <span className={styles.root_subtitle}>Color:</span>
           <div
-            style={{ backgroundColor: product.color }}
+            style={{
+              backgroundColor: product.color,
+            }}
             className={styles.root__color_view}
           >
             <span>{product.color}</span>

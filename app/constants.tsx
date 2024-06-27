@@ -83,3 +83,7 @@ export const selectionsFetch = {
   },
   sneakersSlug: { cards: "_select=id" },
 };
+
+export const colors = {
+  cream: "#C3BEAC",
+};

@@ -9,7 +9,7 @@ type ThemeProviderT = {
   className: string | undefined;
 };
 
-export const ThemeSwitcher: React.FC<ThemeProviderT> = ({ className }) => {
+const ThemeSwitcher: React.FC<ThemeProviderT> = ({ className }) => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   useEffect(() => {
@@ -28,3 +28,5 @@ export const ThemeSwitcher: React.FC<ThemeProviderT> = ({ className }) => {
     </button>
   );
 };
+
+export default ThemeSwitcher;

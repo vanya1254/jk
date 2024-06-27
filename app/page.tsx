@@ -9,14 +9,11 @@ import { productsSelector } from "@/lib/features/products/selectors";
 
 import { Status } from "../lib/mainTypes";
 
-import {
-  CardProduct,
-  SwiperSlider,
-  Hero,
-  CardProductSkeleton,
-  BestChoiceCard,
-} from "./components";
-import { SeeAllLayout } from "./layouts";
+import { CardProduct, CardProductSkeleton, BestChoiceCard } from "./components";
+import SwiperSlider from "@/app/components/SwiperSlider";
+import Hero from "@/app/components/Hero";
+
+import SeeAllLayout from "@/app/layouts/SeeAllLayout";
 
 import { pathPage, selectionsFetch } from "./constants";
 import { getRandomMinMax } from "./utils/getRandomMinMax";
@@ -30,7 +27,7 @@ export default function Home() {
   useEffect(() => {
     dispatch(fetchProducts(`?limit=10&${selectionsFetch.home.cards}`));
     setBestProduct(getRandomMinMax(0, products.length - 1));
-  }, []);
+  }, [dispatch, products.length]);
 
   const CardSkeletons = [...new Array(4)].map((_, i) => (
     <CardProductSkeleton key={i} />

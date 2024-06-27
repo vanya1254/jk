@@ -2,7 +2,9 @@
 
 import React from "react";
 
-import { ButtonCustom, SwiperSlider } from "../";
+import ButtonCustom from "@/app/components/ButtonCustom";
+
+import SwiperSlider from "@/app/components/SwiperSlider";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { filtersSelector } from "@/lib/features/filters/selectors";

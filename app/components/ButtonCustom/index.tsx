@@ -8,7 +8,7 @@ type ButtonCustomPropsT = {
   text: string;
 };
 
-export const ButtonCustom: React.FC<ButtonCustomPropsT> = ({
+const ButtonCustom: React.FC<ButtonCustomPropsT> = ({
   onClick,
   className,
   text,
@@ -19,3 +19,5 @@ export const ButtonCustom: React.FC<ButtonCustomPropsT> = ({
     </button>
   );
 };
+
+export default ButtonCustom;

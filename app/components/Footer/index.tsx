@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./Footer.module.scss";
 
-export const Footer: React.FC = () => {
+const Footer: React.FC = () => {
   return (
     <footer className={styles.root}>
       <a className={styles.root_link} href="https://github.com/vanya1254">
@@ -43,3 +43,5 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+
+export default Footer;

@@ -1,6 +1,6 @@
 import React from "react";
-
 import Link from "next/link";
+import Image from "next/image";
 
 import styles from "./BestChoiceCard.module.scss";
 
@@ -32,7 +32,14 @@ export const BestChoiceCard: React.FC<BestChoiceCardPropsT> = ({
             2
           )}`}</span>
         </div>
-        <img className={styles.root_img} src={img} alt="best choice item" />
+        <Image
+          quality={100}
+          width={750}
+          height={750}
+          className={styles.root_img}
+          src={img}
+          alt="best choice item"
+        />
       </article>
     </Link>
   );

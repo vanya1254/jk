@@ -1,13 +1,17 @@
 "use client";
 
-import { GridLayout, CartLayout } from "../layouts";
-import { CartSummary } from "../components";
-import { CartItem } from "../components/CartItem/index";
+import { useEffect, useState } from "react";
+
+import GridLayout from "@/app/layouts/GridLayout";
+import CartLayout from "@/app/layouts/CartLayout";
+
+import { CartSummary, CartItem } from "../components";
+
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { bagSelector } from "@/lib/features/bag/selectors";
-import { Status } from "@/lib/mainTypes";
-import { useEffect, useState } from "react";
 import { fetchBag, getSummary } from "@/lib/features/bag/slice";
+
+import { Status } from "@/lib/mainTypes";
 
 export default function Bag() {
   const dispatch = useAppDispatch();
@@ -16,12 +20,12 @@ export default function Bag() {
 
   useEffect(() => {
     dispatch(fetchBag());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getSummary());
     setCountItems(bag.length);
-  }, [bag]);
+  }, [dispatch, bag]);
 
   return (
     <main>

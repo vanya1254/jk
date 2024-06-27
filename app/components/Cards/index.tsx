@@ -10,10 +10,12 @@ type CardsPropsT = {
 };
 
 export const Cards: React.FC<CardsPropsT> = ({ products }) => {
+  const id = useId();
+
   return (
     <ul className={styles.root}>
-      {products.map((product) => (
-        <li key={useId()} className={styles.root__li}>
+      {products.map((product, i) => (
+        <li key={`${id}-${i}`} className={styles.root__li}>
           <CardProduct product={product} />
         </li>
       ))}

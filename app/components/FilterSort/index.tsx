@@ -3,7 +3,8 @@
 import React, { useId, useState } from "react";
 
 import { sortTypes } from "@/app/constants";
-import { ButtonCustom, Filters } from "../";
+import ButtonCustom from "@/app/components/ButtonCustom";
+import { Filters } from "../";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { filterSelector } from "@/lib/features/filter/selectors";

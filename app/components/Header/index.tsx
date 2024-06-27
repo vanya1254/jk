@@ -9,11 +9,11 @@ import { HiOutlineSearch } from "react-icons/hi";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import useScrollDirection from "@/app/hooks/useScrollDirection";
 
-import { ThemeSwitcher } from "../";
+import ThemeSwitcher from "@/app/components/ThemeSwitcher";
 
 import styles from "./Header.module.scss";
 
-export const Header: React.FC = () => {
+const Header: React.FC = () => {
   const pathName = usePathname();
   const router = useRouter();
   const scrollDirection = useScrollDirection();
@@ -322,3 +322,5 @@ export const Header: React.FC = () => {
     </header>
   );
 };
+
+export default Header;

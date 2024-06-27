@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import Providers from "./providers/Providers";
 import StoreProvider from "./providers/StoreProvider";
-import { Footer, Header } from "./components";
+
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
 
 import "./globals.scss";
 

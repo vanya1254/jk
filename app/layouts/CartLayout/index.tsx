@@ -7,13 +7,12 @@ type CartLayoutPropsT = {
   className?: string;
 };
 
-export const CartLayout: React.FC<CartLayoutPropsT> = ({
-  children,
-  className,
-}) => {
+const CartLayout: React.FC<CartLayoutPropsT> = ({ children, className }) => {
   return (
     <div className={`${styles.root}${className ? ` ${className}` : ""}`}>
       {children}
     </div>
   );
 };
+
+export default CartLayout;
