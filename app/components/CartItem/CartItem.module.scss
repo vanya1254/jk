@@ -3,6 +3,14 @@
   display: flex;
   border-bottom: 1px solid;
 
+  a {
+    display: none;
+
+    @media (min-width: 440px) {
+      display: block;
+    }
+  }
+
   &__img {
     display: flex;
     align-items: center;

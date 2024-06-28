@@ -35,3 +35,20 @@ export type FiltersT = {
   path: "brandName" | "color" | "category" | "sizeRange[]" | "gender";
   value: string[];
 };
+
+export interface CartProductT extends ProductT {
+  size: number;
+  quantity: number;
+  isWished: boolean;
+}
+
+export type FormDataT = {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  country: string;
+  address: string;
+  mail: string;
+  city: string;
+  postcode: string;
+};

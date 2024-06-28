@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 
 import ButtonCustom from "@/app/components/ButtonCustom";
 
@@ -8,9 +9,28 @@ import { useAppSelector } from "@/lib/hooks";
 import { bagSelector } from "@/lib/features/bag/selectors";
 
 import styles from "./CartSummary.module.scss";
+import { toast } from "react-toastify";
 
 export const CartSummary: React.FC = () => {
-  const { summary } = useAppSelector(bagSelector);
+  const router = useRouter();
+  const { bag, summary } = useAppSelector(bagSelector);
+
+  const onClickCheckout = () => {
+    if (bag.length) {
+      router.push("/checkout");
+    } else {
+      toast.warning("Bag empty", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
 
   return (
     <div className={styles.root}>
@@ -33,7 +53,7 @@ export const CartSummary: React.FC = () => {
         <span>Total</span>
         <span>{`$${(summary.total / 100).toFixed(2)}`}</span>
       </p>
-      <ButtonCustom onClick={undefined} text={"CHECKOUT"} />
+      <ButtonCustom onClick={onClickCheckout} text={"CHECKOUT"} />
     </div>
   );
 };

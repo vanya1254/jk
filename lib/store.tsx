@@ -4,10 +4,11 @@ import filters from "./features/filters/slice";
 import filter from "./features/filter/slice";
 import product from "./features/product/slice";
 import bag from "./features/bag/slice";
+import order from "./features/order/slice";
 
 export const makeStore = () => {
   return configureStore({
-    reducer: { products, filters, filter, product, bag },
+    reducer: { products, filters, filter, product, bag, order },
   });
 };
 

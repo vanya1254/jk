@@ -9,7 +9,7 @@ import { PiTrash } from "react-icons/pi";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { patchBag, removeItem } from "@/lib/features/bag/slice";
 
-import { CartProductT } from "@/lib/features/bag/types";
+import { CartProductT } from "@/lib/mainTypes";
 
 import styles from "./CartItem.module.scss";
 

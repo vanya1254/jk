@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { BagState, CartProductT } from "./types";
-import { Status } from "@/lib/mainTypes";
+import { BagState } from "./types";
+import { CartProductT, Status } from "@/lib/mainTypes";
 import { RootState } from "@/lib/store";
 
 export const fetchBag = createAsyncThunk("bag/fetchBag", async () => {
@@ -64,7 +64,9 @@ export const bagSlice = createSlice({
 
       state.bag.splice(removeIndex, 1);
     },
-
+    clearBag(state) {
+      state.bag = [];
+    },
     getSummary(state) {
       state.summary.subtotal = state.bag.reduce(
         (sum, item) => sum + item.priceCents,
@@ -107,6 +109,6 @@ export const bagSlice = createSlice({
   },
 });
 
-export const { removeItem, getSummary } = bagSlice.actions;
+export const { removeItem, clearBag, getSummary } = bagSlice.actions;
 
 export default bagSlice.reducer;

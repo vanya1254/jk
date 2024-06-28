@@ -13,7 +13,7 @@ import GridLayout from "@/app/layouts/GridLayout";
 import ButtonCustom from "@/app/components/ButtonCustom";
 import SwiperSlider from "@/app/components/SwiperSlider";
 
-import { CartProductT } from "@/lib/features/bag/types";
+import { CartProductT } from "@/lib/mainTypes";
 
 import styles from "./ProductWrapper.module.scss";
 
@@ -34,7 +34,7 @@ export const ProductWrapper: React.FC = () => {
 
       dispatch(postItem({ item }));
 
-      toast.success("Added to bag!", {
+      toast.success(`Added to bag! (${curSize} us)`, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: true,

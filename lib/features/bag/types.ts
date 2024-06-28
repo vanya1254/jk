@@ -1,16 +1,9 @@
-import { Status } from "@/lib/mainTypes";
-import { ProductT } from "../../mainTypes";
+import { CartProductT, Status } from "@/lib/mainTypes";
 
 export interface BagState {
   bag: CartProductT[];
   summary: SummaryT;
   status: Status;
-}
-
-export interface CartProductT extends ProductT {
-  size: number;
-  quantity: number;
-  isWished: boolean;
 }
 
 export type SummaryT = {

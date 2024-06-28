@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 100px var(--padding-hotizontal-mobile);
+  width: 100%;
+
+  &_title {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+  }
+
+  @media (min-width: 1023px) {
+    width: 65%;
+  }
+}
