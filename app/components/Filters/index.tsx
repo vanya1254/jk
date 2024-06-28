@@ -48,13 +48,14 @@ export const Filters: React.FC<FiltersPropsT> = ({
   return (
     <section
       className={`${styles.root}`}
-      style={{
-        transform: `${
-          isOpen
-            ? "translate(0vh, 0vh)"
-            : "translate(0vh, var(--max-height-filters))"
-        }`,
-      }}
+      style={
+        isOpen
+          ? { visibility: "visible", transform: "translate(0vh, 0vh)" }
+          : {
+              visibility: "hidden",
+              transform: "translate(0vh, var(--max-height-filters))",
+            }
+      }
     >
       <div
         className={styles.root_moveMe}
