@@ -150,3 +150,8 @@ ul li {
 .active {
   background-color: var(--color-green) !important;
 }
+
+[data-theme="light"] .Toastify__toast {
+  color: var(--color-light);
+  background: var(--color-dark);
+}
