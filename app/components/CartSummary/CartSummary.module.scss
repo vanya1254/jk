@@ -1,4 +1,8 @@
 .root {
+  position: sticky;
+  top: var(--height-header);
+  align-self: start;
+
   display: flex;
   flex-direction: column;
   gap: 30px;
