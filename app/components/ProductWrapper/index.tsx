@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 import Image from "next/image";
 
 import useWindowSize from "@/app/hooks/useWindowSize";
@@ -32,6 +33,28 @@ export const ProductWrapper: React.FC = () => {
       const item = { ...product, size: curSize, quantity: 1 } as CartProductT;
 
       dispatch(postItem({ item }));
+
+      toast.success("Added to bag!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      toast.warning("Choose the size", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 
