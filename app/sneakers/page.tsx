@@ -2,7 +2,6 @@
 
 import React, { useCallback, useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Status } from "../../lib/mainTypes";
 
 import {
   CardProductSkeleton,
@@ -19,6 +18,8 @@ import { productsSelector } from "@/lib/features/products/selectors";
 import { fetchProducts } from "@/lib/features/products/slice";
 import { fetchFilters } from "@/lib/features/filters/slice";
 import { reset } from "@/lib/features/filter/slice";
+
+import { Status } from "../../lib/mainTypes";
 
 export default function Sneakers() {
   const pathName = usePathname();
@@ -87,11 +88,7 @@ export default function Sneakers() {
       ) : (
         "ERROR"
       )}
-      <Pagination
-        changeParams={changeParams}
-        // countPages={10}
-        currentPage={Number(searchParams.get("page"))}
-      />
+      <Pagination changeParams={changeParams} />
     </main>
   );
 }

@@ -9,15 +9,9 @@ import styles from "./Pagintaion.module.scss";
 
 type PaginationPropsT = {
   changeParams: (name: string, value: string) => void;
-  // countPages: number;
-  currentPage: number;
 };
 
-export const Pagination: React.FC<PaginationPropsT> = ({
-  changeParams,
-  // countPages,
-  currentPage,
-}) => {
+export const Pagination: React.FC<PaginationPropsT> = ({ changeParams }) => {
   const { meta } = useAppSelector(productsSelector);
 
   return (
@@ -26,7 +20,7 @@ export const Pagination: React.FC<PaginationPropsT> = ({
         <li key={pageNum} className={styles.root_page}>
           <button
             className={`${styles.root_link} ${
-              currentPage === pageNum + 1 ? styles.root_active : ""
+              meta.current_page === pageNum + 1 ? styles.root_active : ""
             }`}
             onClick={() => changeParams("page", `${pageNum + 1}`)}
           >

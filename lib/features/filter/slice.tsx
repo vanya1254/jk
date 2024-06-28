@@ -35,7 +35,6 @@ const initialState: FilterSliceState = {
     name: "release date ↑",
     sortProperty: "releaseDate",
   },
-  activePage: 1,
   searchValue: "",
 };
 
@@ -52,16 +51,12 @@ export const filterSlice = createSlice({
     setActiveSortType(state, action: PayloadAction<SortType>) {
       state.activeSortType = action.payload;
     },
-    setActivePage(state, action: PayloadAction<number>) {
-      state.activePage = action.payload;
-    },
     setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
     },
     setFilters(state, action: PayloadAction<FilterSliceState>) {
       state.activeCategory = action.payload.activeCategory;
       state.activeSortType = action.payload.activeSortType;
-      state.activePage = action.payload.activePage;
       state.searchValue = action.payload.searchValue;
     },
   },
@@ -71,7 +66,6 @@ export const {
   reset,
   setActiveCategory,
   setActiveSortType,
-  setActivePage,
   setSearchValue,
   setFilters,
 } = filterSlice.actions;
