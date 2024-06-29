@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useCallback, useEffect, Suspense } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import React, { useCallback, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 import {
   CardProductSkeleton,
@@ -24,10 +24,22 @@ import { Status } from "../../lib/mainTypes";
 export default function Sneakers(props: { params: any; searchParams: any }) {
   const pathName = usePathname();
   const router = useRouter();
-  const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
   const { products, status } = useAppSelector(productsSelector);
-  console.log(searchParams.toString(), props.searchParams);
+
+  const getSearchParams = () => {
+    if (!props.searchParams?.page) {
+      props.searchParams.page = 1;
+    }
+
+    const searchParams = Object.entries(props.searchParams)
+      .map((a, i) => {
+        return i ? `&${a[0]}=${a[1]}` : `?${a[0]}=${a[1]}`;
+      })
+      .join("");
+
+    return searchParams;
+  };
 
   useEffect(() => {
     dispatch(
@@ -38,14 +50,11 @@ export default function Sneakers(props: { params: any; searchParams: any }) {
   }, [dispatch]);
 
   useEffect(() => {
+    const searchParams = getSearchParams();
     dispatch(
-      fetchProducts(
-        `?page=${searchParams.get("page") || 1}&${
-          selectionsFetch.sneakers.cards
-        }&${searchParams.toString().replace(new RegExp(/page=[0-9]{0,2}/), "")}`
-      )
+      fetchProducts(`${searchParams}&${selectionsFetch.sneakers.cards}`)
     );
-  }, [dispatch, searchParams]);
+  }, [dispatch, props.searchParams]);
 
   const changeParams = (name: string, value: string): void => {
     router.push(`${pathName}?${createQueryString(name, value)}`);
@@ -62,7 +71,7 @@ export default function Sneakers(props: { params: any; searchParams: any }) {
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
+      const params = new URLSearchParams(getSearchParams());
       if (value) {
         params.set(name, value);
       } else {
@@ -71,11 +80,10 @@ export default function Sneakers(props: { params: any; searchParams: any }) {
 
       return params.toString();
     },
-    [searchParams]
+    [getSearchParams]
   );
 
   return (
-    // <Suspense>
     <main>
       <Hero crumbs={JSON.parse(pathPage)[pathName]} />
       <FilterSort
@@ -92,6 +100,5 @@ export default function Sneakers(props: { params: any; searchParams: any }) {
       )}
       <Pagination changeParams={changeParams} />
     </main>
-    // </Suspense>
   );
 }
