@@ -70,7 +70,7 @@
       width: 8px;
       height: 8px;
       background-size: contain;
-      background-image: url("/img/plus.svg");
+      background-image: url("/jk/img/plus.svg");
     }
 
     &__content {
@@ -99,7 +99,7 @@
     animation: fadeIn 1s linear forwards;
   }
   &__details[open] &__details_svg {
-    background-image: url("/img/minus.svg");
+    background-image: url("/jk/img/minus.svg");
   }
 
   &::-webkit-scrollbar {
