@@ -11,6 +11,8 @@ const nextConfig = {
       },
     ],
   },
+  basePath: "/jk",
+  assetPrefix: "/js",
 };
 
 export default nextConfig;
