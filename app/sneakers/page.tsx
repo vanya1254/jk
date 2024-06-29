@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, Suspense } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import {
@@ -21,12 +21,13 @@ import { reset } from "@/lib/features/filter/slice";
 
 import { Status } from "../../lib/mainTypes";
 
-export default function Sneakers() {
+export default function Sneakers(props: { params: any; searchParams: any }) {
   const pathName = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
   const { products, status } = useAppSelector(productsSelector);
+  console.log(searchParams.toString(), props.searchParams);
 
   useEffect(() => {
     dispatch(
@@ -74,6 +75,7 @@ export default function Sneakers() {
   );
 
   return (
+    // <Suspense>
     <main>
       <Hero crumbs={JSON.parse(pathPage)[pathName]} />
       <FilterSort
@@ -90,5 +92,6 @@ export default function Sneakers() {
       )}
       <Pagination changeParams={changeParams} />
     </main>
+    // </Suspense>
   );
 }

@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { Bounce, ToastContainer, toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import Image from "next/image";
 
 import useWindowSize from "@/app/hooks/useWindowSize";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { productSelector } from "@/lib/features/product/selectors";
 import { postItem } from "@/lib/features/bag/slice";
+import { fetchProduct } from "@/lib/features/product/slice";
 
 import GridLayout from "@/app/layouts/GridLayout";
 import ButtonCustom from "@/app/components/ButtonCustom";
@@ -17,7 +18,11 @@ import { CartProductT } from "@/lib/mainTypes";
 
 import styles from "./ProductWrapper.module.scss";
 
-export const ProductWrapper: React.FC = () => {
+export type ProuctWrapperPropsT = {
+  slug: string;
+};
+
+export const ProductWrapper: React.FC<ProuctWrapperPropsT> = ({ slug }) => {
   const dispatch = useAppDispatch();
   const size = useWindowSize();
   const { product } = useAppSelector(productSelector);
@@ -74,6 +79,10 @@ export const ProductWrapper: React.FC = () => {
       }]`}</span>
     </div>
   ));
+
+  useEffect(() => {
+    dispatch(fetchProduct(slug));
+  }, [dispatch, slug]);
 
   return (
     <GridLayout className={styles.root}>

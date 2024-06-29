@@ -12,18 +12,22 @@ import { orderSelector } from "@/lib/features/order/selectors";
 import CheckoutLayout from "../layouts/CheckoutLayout";
 import FormCustom from "../components/FormCustom";
 import { useRouter } from "next/navigation";
+import { Status } from "@/lib/mainTypes";
 
 export default function Checkout() {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { bag, summary } = useAppSelector(bagSelector);
-  const { order } = useAppSelector(orderSelector);
+  const { order, status } = useAppSelector(orderSelector);
 
   const onSubmitForm = () => {
     dispatch(postOrder({ order }));
+    console.log(order);
+
     dispatch(clearBag());
     dispatch(patchBag());
     router.push("/bag");
+
     toast.success(`Order created! ($${(summary.total / 100).toFixed(2)})`, {
       position: "top-center",
       autoClose: 3000,
@@ -38,7 +42,7 @@ export default function Checkout() {
 
   useEffect(() => {
     dispatch(setBag(bag));
-  }, [dispatch]);
+  }, [dispatch, bag]);
 
   if (bag.length) {
     return (

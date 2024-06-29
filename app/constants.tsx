@@ -5,6 +5,7 @@ export const pathPage = `{
   "/sneakers": ["Home", "Sneakers"],
   "/cart": ["Home", "Cart"]
 }`;
+export const API = "https://94bd9fe6fad33179.mokky.dev/sneakers";
 
 export const sortTypes: SortType[] = [
   { name: "release date ↑", sortProperty: "releaseDate" },
@@ -81,7 +82,10 @@ export const selectionsFetch = {
     cards:
       "_select=slug,mainPictureUrl,name,productTemplateExternalPictures,priceCents,id",
   },
-  sneakersSlug: { cards: "_select=id" },
+  sneakersSlug: {
+    cards: "_select=id",
+    slugs: "_select=slug",
+  },
 };
 
 export const colors = {
