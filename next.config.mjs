@@ -12,7 +12,7 @@ const nextConfig = {
     ],
   },
   basePath: "/jk",
-  assetPrefix: "/js",
+  assetPrefix: "/jk",
 };
 
 export default nextConfig;
