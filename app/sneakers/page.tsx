@@ -28,7 +28,7 @@ export default function Sneakers(props: { params: any; searchParams: any }) {
   const { products, status } = useAppSelector(productsSelector);
 
   const getSearchParams = () => {
-    if (!props.searchParams?.page) {
+    if (!props.searchParams.page) {
       props.searchParams.page = 1;
     }
 
@@ -57,7 +57,7 @@ export default function Sneakers(props: { params: any; searchParams: any }) {
   }, [dispatch, props.searchParams]);
 
   const changeParams = (name: string, value: string): void => {
-    router.push(`${pathName}?${createQueryString(name, value)}`);
+    router.push(`/${pathName}?${createQueryString(name, value)}`);
   };
 
   const CardSkeletons = [...new Array(4)].map((_, i) => (
