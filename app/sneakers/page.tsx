@@ -56,7 +56,7 @@ export default function Sneakers(props: { params: any; searchParams: any }) {
       fetchProducts(`${searchParams}&${selectionsFetch.sneakers.cards}`)
     );
     console.log(props.searchParams);
-  }, [dispatch, props.searchParams]);
+  }, [dispatch, props]);
 
   const changeParams = (name: string, value: string): void => {
     router.push(`${pathName}?${createQueryString(name, value)}`);
