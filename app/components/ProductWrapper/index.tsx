@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 import Image from "next/image";
+import { toast } from "react-toastify";
 
 import useWindowSize from "@/app/hooks/useWindowSize";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";

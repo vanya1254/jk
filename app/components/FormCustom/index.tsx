@@ -24,7 +24,9 @@ const FormCustom: React.FC<FormCustomPropsT> = ({ onSubmitForm }) => {
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<FormDataT> = (data) => {
-    dispatch(setForm(data));
+    const formData = { ...data };
+
+    dispatch(setForm(formData));
     onSubmitForm();
   };
 
