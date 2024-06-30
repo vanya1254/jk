@@ -28,7 +28,6 @@ export const Cards: React.FC = () => {
         }&${searchParams.toString().replace(new RegExp(/page=[0-9]{0,2}/), "")}`
       )
     );
-    console.log(searchParams);
   }, [dispatch, searchParams]);
 
   const CardSkeletons = [...new Array(4)].map((_, i) => (
