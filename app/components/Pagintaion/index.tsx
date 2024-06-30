@@ -1,18 +1,36 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 import { useAppSelector } from "@/lib/hooks";
 import { productsSelector } from "@/lib/features/products/selectors";
 
 import styles from "./Pagintaion.module.scss";
 
-type PaginationPropsT = {
-  changeParams: (name: string, value: string) => void;
-};
-
-export const Pagination: React.FC<PaginationPropsT> = ({ changeParams }) => {
+export const Pagination: React.FC = () => {
   const { meta } = useAppSelector(productsSelector);
+  const pathName = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (value) {
+        params.set(name, value);
+      } else {
+        params.delete(name);
+      }
+
+      return params.toString();
+    },
+    [searchParams]
+  );
+
+  const changeParams = (name: string, value: string): void => {
+    router.push(`${pathName}?${createQueryString(name, value)}`);
+  };
 
   return (
     <ul className={styles.root}>

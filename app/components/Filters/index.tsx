@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 import ButtonCustom from "@/app/components/ButtonCustom";
 
@@ -9,25 +10,25 @@ import SwiperSlider from "@/app/components/SwiperSlider";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { filtersSelector } from "@/lib/features/filters/selectors";
 import { filterSelector } from "@/lib/features/filter/selectors";
-import { setActiveCategory } from "@/lib/features/filter/slice";
+import { reset, setActiveCategory } from "@/lib/features/filter/slice";
 
 import { Status } from "@/lib/mainTypes";
 
 import styles from "./Filters.module.scss";
 
 type FiltersPropsT = {
-  clearParams: () => void;
   changeParams: (name: string, value: string) => void;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const Filters: React.FC<FiltersPropsT> = ({
-  clearParams,
   changeParams,
   isOpen,
   setIsOpen,
 }) => {
+  const pathName = usePathname();
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { filters, status } = useAppSelector(filtersSelector);
   const { activeCategory } = useAppSelector(filterSelector);
@@ -43,6 +44,11 @@ export const Filters: React.FC<FiltersPropsT> = ({
 
     dispatch(setActiveCategory(newCategory));
     changeParams(newCategory[i].path, newCategory[i].value[0]);
+  };
+
+  const clearParams = () => {
+    dispatch(reset());
+    router.push(pathName);
   };
 
   return (

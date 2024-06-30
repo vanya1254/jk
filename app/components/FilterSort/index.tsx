@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useId, useState } from "react";
+import React, { useCallback, useId, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { sortTypes } from "@/app/constants";
 import ButtonCustom from "@/app/components/ButtonCustom";
@@ -9,24 +10,38 @@ import { Filters } from "../";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { filterSelector } from "@/lib/features/filter/selectors";
 import { setActiveSortType } from "@/lib/features/filter/slice";
+import { productsSelector } from "@/lib/features/products/selectors";
+import { Status } from "@/lib/mainTypes";
 
 import styles from "./FilterSort.module.scss";
 
-type FilterSortPropsT = {
-  clearParams: () => void;
-  changeParams: (name: string, value: string) => void;
-  count: number;
-};
-
-export const FilterSort: React.FC<FilterSortPropsT> = ({
-  clearParams,
-  changeParams,
-  count,
-}) => {
+export const FilterSort: React.FC = () => {
+  const pathName = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
   const idDetails = useId();
   const { activeSortType } = useAppSelector(filterSelector);
+  const { products, status } = useAppSelector(productsSelector);
   const [isOpenFilters, setIsOpenFilters] = useState<boolean>(false);
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (value) {
+        params.set(name, value);
+      } else {
+        params.delete(name);
+      }
+
+      return params.toString();
+    },
+    [searchParams]
+  );
+
+  const changeParams = (name: string, value: string): void => {
+    router.push(`${pathName}?${createQueryString(name, value)}`);
+  };
 
   const onMouseOver = (e: React.MouseEvent<HTMLElement>) => {
     const details = e.currentTarget;
@@ -87,10 +102,11 @@ export const FilterSort: React.FC<FilterSortPropsT> = ({
             </details>
           </div>
         </div>
-        <p className={styles.root_count}>[{count}]</p>
+        <p className={styles.root_count}>
+          [{status === Status.FULFILLED ? products.length : 0}]
+        </p>
       </div>
       <Filters
-        clearParams={clearParams}
         changeParams={changeParams}
         isOpen={isOpenFilters}
         setIsOpen={setIsOpenFilters}
