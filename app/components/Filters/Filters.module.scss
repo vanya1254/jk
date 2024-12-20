@@ -56,8 +56,11 @@
       display: inline-flex;
       justify-content: space-between;
       align-items: center;
-      list-style: none;
       width: 100%;
+      list-style: none;
+      &::-webkit-details-marker {
+        display: none;
+      }
 
       cursor: pointer;
 
