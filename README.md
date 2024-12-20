@@ -15,12 +15,12 @@
 
 Проект разработан с использованием следующих технологий:
 
-- **TypeScript**
-- **React.js**
-- **Next.js**
-- **Redux-tookit**
-- **SCSS (модульный подход)**
-- **API mokky.dev** (для получения данных о товарах)
+- **TypeScript** _(используется для статической типизации и улучшения качества кода)_
+- **React.js** _(основа для построения пользовательского интерфейса)_
+- **Next.js** _(для SSR и оптимизации производительности проекта)_
+- **Redux-toolkit** _(для управления состоянием приложения)_
+- **SCSS (модульный подход)** _(стилизация компонентов с поддержкой вложенности и переменных)_
+- **API mokky.dev** _(используется в качестве базы данных для получения данных о товарах)_
 
 ## 📂 Структура проекта
 
@@ -28,59 +28,48 @@
 jk/
 │-- public               # Публичные ресурсы
 │   │-- img/             # Изображения
-│-- lib/
+│-- lib/                 # Дополнительные библиотеки или вспомогательный код
+│   │-- features/        # Redux-срезы и логика для состояний
+│   │   │-- bag/
+│   │   │   │-- selectors.ts    # Селекторы для работы с состоянием
+│   │   │   │-- slice.ts        # Создание среза состояния (redux toolkit)
+│   │   │   │-- types.ts        # Типизация для bag
+│   │   │-- filter/             # Аналогичные структуры для фильтрации
+│   │   │-- ...
 │-- app/
-│   │-- bag/
+│   │-- bag/             # Страница с отображением корзины
 │   │   │-- page.tsx
-│   │-- checkout/
+│   │-- checkout/        # Страница оформления заказа
 │   │   │-- page.tsx
-│   │-- components/       # Переиспользуемые компоненты React
+│   │-- components/      # Переиспользуемые компоненты React
 │   │   │-- BestChoiceCard/
-│   │   │-- ButtonCustom/
-│   │   │-- CardProduct/
-│   │   │-- Cards/
-│   │   │-- CartItem/
-│   │   │-- CartSummary/
-│   │   │-- FilterSort/
-│   │   │-- Filters/
-│   │   │-- Footer/
-│   │   │-- FormCustom/
-│   │   │-- Header/
-│   │   │-- Hero/
-│   │   │-- Pagination/
-│   │   │-- ProductWrapper/
-│   │   │-- Skeletons/
-│   │   │-- SwiperSlider/
-│   │   │-- ThemeSwitcher/
-│   │   │-- index.tsx
-│   │-- hooks/
-│   │   │-- useScrollDirection.tsx
-│   │   │-- useWindowSize.tsx
-│   │-- layouts/
-│   │   │-- CartLayout/
-│   │   │-- CheckoutLayout/
-│   │   │-- GridLayout/
-│   │   │-- SeeAllLayout/
-│   │-- providers/
-│   │   │-- Providers.tsx
-│   │   │-- StoreProvider.tsx
-│   │-- sneakers/
-│   │   │-- [slug]/
-│   │   │   │-- page.tsx
-│   │   │-- page.tsx
-│   │-- styles/
-│   │   │-- _animations.scss
-│   │   │-- _variables.scss
-│   │-- utils/            # Вспомогательные функции
-│   │   │-- getRandomMinMax.tsx
-│   │-- constants.tsx
-│   │-- favicon.ico
-│   │-- globals.scss
-│   │-- layout.tsx
-│   │-- page.tsx           # Главный компонент приложения
-│-- package.json          # Зависимости проекта
-│-- README.md             # Описание проекта
-│-- tsconfig.json
+│   │   │   │-- BestChoiceCard.module.scss
+│   │   │   │-- index.tsx        # Компонент
+│   │   │-- ButtonCustom/    # Кастомная кнопка
+│   │   │-- CardProduct/     # Карточка товара
+│   │   │-- Filters/         # Компонент для фильтрации
+│   │   │-- Header/          # Шапка сайта
+│   │   │-- Footer/          # Подвал сайта
+│   │   │-- ...
+│   │-- hooks/           # Кастомные хуки
+│   │   │-- useScrollDirection.tsx  # Хук для отслеживания направления прокрутки
+│   │   │-- useWindowSize.tsx       # Хук для отслеживания размера окна
+│   │-- layouts/         # Глобальные и локальные макеты
+│   │-- providers/       # Провайдеры состояния и контекста
+│   │-- sneakers/        # Страницы каталога кроссовок
+│   │   │-- [slug]/      # Динамическая страница товара
+│   │-- styles/          # Глобальные стили
+│   │   │-- _animations.scss  # Анимации
+│   │   │-- _variables.scss   # Глобальные переменные
+│   │-- utils/           # Вспомогательные функции
+│   │   │-- getRandomMinMax.tsx  # Генерация случайных значений в диапазоне
+│   │-- constants.tsx    # Константы проекта
+│   │-- globals.scss     # Глобальный SCSS файл
+│   │-- layout.tsx       # Главный layout проекта
+│   │-- page.tsx         # Главная страница приложения
+│-- package.json         # Зависимости проекта
+│-- README.md            # Описание проекта
+│-- tsconfig.json        # Конфигурация TypeScript
 ```
 
 ## 🎨 Макет и UI/UX
